@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile App UI</title>
+    <style>
+        .menu-container {
+            display: none; /* 初始隱藏菜單 */
+        }
+    </style>
+    <script>
+        function toggleMenu() {
+            var menu = document.getElementById("menuContainer");
+            if (menu.style.display === "none" || menu.style.display === "") {
+                menu.style.display = "block";  // 顯示菜單
+            } else {
+                menu.style.display = "none";  // 隱藏菜單
+            }
+        }
+    </script>
+</head>
+<body>
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+            <!-- 左側屏幕（菜單打開前） -->
+            <td width="50%" valign="top">
+                <table width="300" height="500" border="1" cellspacing="0" cellpadding="0">
+                    <tr height="50" bgcolor="#87CEEB">
+                        <td>
+                            <table width="100%" border="0" cellspacing="0" cellpadding="5">
+                                <tr>
+                                    <td width="30" bgcolor="#CCCCCC">
+                                        <!-- 菜單按鈕 -->
+                                        <button onclick="toggleMenu()">menu</button>
+                                    </td>
+                                </tr>
+                            </table>
+                            <table width="100%" border="0" cellspacing="0" cellpadding="5">
+                                <tr>
+                                    <td bgcolor="#FFFFFF">搜尋</td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr height="410">
+                        <td bgcolor="#D3D3D3" align="center" valign="middle">
+                            放今日推薦注意股票資訊
+                        </td>
+                    </tr>
+                    <tr height="40" bgcolor="#E6E6FA">
+                        <td>&nbsp;</td>
+                    </tr>
+                </table>
+            </td>
+            
+            <!-- 右側屏幕（菜單打開後） -->
+            <td width="50%" valign="top">
+                <table id="menuContainer" class="menu-container" width="300" height="500" border="1" cellspacing="0" cellpadding="0">
+                    <tr>
+                        <td>
+                            <table width="100%" height="100%" border="0" cellspacing="0" cellpadding="0">
+                                <tr>
+                                    <td width="150" bgcolor="#FFE4B5" valign="top">
+                                        <table width="100%" border="0" cellspacing="0" cellpadding="5">
+                                            <tr><td bgcolor="#CCCCCC" height="30">&nbsp;</td></tr>
+                                            <tr><td bgcolor="#FFA07A">首頁</td></tr>
+                                            <tr><td bgcolor="#FFA07A">新聞</td></tr>
+                                            <tr><td bgcolor="#FFA07A">今日股市</td></tr>
+                                            <tr><td bgcolor="#FFA07A">分析建議</td></tr>
+                                            <tr><td bgcolor="#FFA07A">我的最愛</td></tr>
+                                            <tr><td bgcolor="#FFA07A">設定</td></tr>
+                                        </table>
+                                    </td>
+                                    <td width="150" valign="top">
+                                        <table width="100%" height="100%" border="0" cellspacing="0" cellpadding="0">
+                                            <tr height="50" bgcolor="#87CEEB">
+                                                <td>
+                                                    <table width="100%" border="0" cellspacing="0" cellpadding="5">
+                                                        <tr>
+                                                            <td bgcolor="#FFFFFF">搜尋</td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            <tr height="410">
+                                                <td bgcolor="#D3D3D3" align="center" valign="middle">
+                                                    放今日推薦注意股票資訊
+                                                </td>
+                                            </tr>
+                                            <tr height="40" bgcolor="#E6E6FA">
+                                                <td>&nbsp;</td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

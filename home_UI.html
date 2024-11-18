@@ -1,105 +1,109 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-Hant">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mobile App UI</title>
+    <title>主畫面首頁</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <!-- 導入CSS -->
+    <link rel="stylesheet" href="Css/Function.css">
     <style>
-        .menu-container {
-            display: none; /* 初始隱藏菜單 */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #B0E0E6; /* 背景顏色 */
+        }
+
+        /* 內容區域 */
+        .container {
+            display: flex;
+            justify-content: space-around;
+            padding: 20px;
+        }
+        /*關注股票的現況
+        關注的股票今日的漲跌*/
+        #container-right {
+            background-color: #87CEFA;
+            width: 20%;
+            padding: 20px;
+            font-size: 12px;
+        }
+        /*今日推薦注意股票資訊*/
+        #container-center {
+            background-color: #D3D3D3;
+            width: 60%;
+            text-align: center;
+            padding: 50px 20px;
+            font-size: 20px;
+        }
+
+        /* 股票新聞區 */
+        #stock-news {
+            background-color: #FADADD;
+            padding: 30px;
+            width: 70%;
+            height: auto;
+            text-align: center;
+            font-size: 16px;
         }
     </style>
-    <script>
-        function toggleMenu() {
-            var menu = document.getElementById("menuContainer");
-            if (menu.style.display === "none" || menu.style.display === "") {
-                menu.style.display = "block";  // 顯示菜單
-            } else {
-                menu.style.display = "none";  // 隱藏菜單
-            }
-        }
-    </script>
 </head>
 <body>
-    <table width="100%" border="0" cellspacing="0" cellpadding="0">
-        <tr>
-            <!-- 左側屏幕（菜單打開前） -->
-            <td width="50%" valign="top">
-                <table width="300" height="500" border="1" cellspacing="0" cellpadding="0">
-                    <tr height="50" bgcolor="#87CEEB">
-                        <td>
-                            <table width="100%" border="0" cellspacing="0" cellpadding="5">
-                                <tr>
-                                    <td width="30" bgcolor="#CCCCCC">
-                                        <!-- 菜單按鈕 -->
-                                        <button onclick="toggleMenu()">menu</button>
-                                    </td>
-                                </tr>
-                            </table>
-                            <table width="100%" border="0" cellspacing="0" cellpadding="5">
-                                <tr>
-                                    <td bgcolor="#FFFFFF">搜尋</td>
-                                </tr>
-                            </table>
-                        </td>
-                    </tr>
-                    <tr height="410">
-                        <td bgcolor="#D3D3D3" align="center" valign="middle">
-                            放今日推薦注意股票資訊
-                        </td>
-                    </tr>
-                    <tr height="40" bgcolor="#E6E6FA">
-                        <td>&nbsp;</td>
-                    </tr>
-                </table>
-            </td>
-            
-            <!-- 右側屏幕（菜單打開後） -->
-            <td width="50%" valign="top">
-                <table id="menuContainer" class="menu-container" width="300" height="500" border="1" cellspacing="0" cellpadding="0">
-                    <tr>
-                        <td>
-                            <table width="100%" height="100%" border="0" cellspacing="0" cellpadding="0">
-                                <tr>
-                                    <td width="150" bgcolor="#FFE4B5" valign="top">
-                                        <table width="100%" border="0" cellspacing="0" cellpadding="5">
-                                            <tr><td bgcolor="#CCCCCC" height="30">&nbsp;</td></tr>
-                                            <tr><td bgcolor="#FFA07A">首頁</td></tr>
-                                            <tr><td bgcolor="#FFA07A">新聞</td></tr>
-                                            <tr><td bgcolor="#FFA07A">今日股市</td></tr>
-                                            <tr><td bgcolor="#FFA07A">分析建議</td></tr>
-                                            <tr><td bgcolor="#FFA07A">我的最愛</td></tr>
-                                            <tr><td bgcolor="#FFA07A">設定</td></tr>
-                                        </table>
-                                    </td>
-                                    <td width="150" valign="top">
-                                        <table width="100%" height="100%" border="0" cellspacing="0" cellpadding="0">
-                                            <tr height="50" bgcolor="#87CEEB">
-                                                <td>
-                                                    <table width="100%" border="0" cellspacing="0" cellpadding="5">
-                                                        <tr>
-                                                            <td bgcolor="#FFFFFF">搜尋</td>
-                                                        </tr>
-                                                    </table>
-                                                </td>
-                                            </tr>
-                                            <tr height="410">
-                                                <td bgcolor="#D3D3D3" align="center" valign="middle">
-                                                    放今日推薦注意股票資訊
-                                                </td>
-                                            </tr>
-                                            <tr height="40" bgcolor="#E6E6FA">
-                                                <td>&nbsp;</td>
-                                            </tr>
-                                        </table>
-                                    </td>
-                                </tr>
-                            </table>
-                        </td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
-    </table>
+
+    <!-- 頂部導航欄 -->
+    <div class="container-fluid">
+        <div class="col-sm-2">
+            <img src="picture/feedback.png" alt="近期公告" width="30">
+            <span>近期公告</span>
+        </div>
+        <div class="col-sm-2">
+            <img src="picture/breaking_news.png" alt="財政報表查詢" width="30">
+            <span>財政報表查詢</span>
+        </div>
+        <div class="col-sm-2">
+            <img src="picture/monitoring.png" alt="今日股市" width="30">
+            <span>今日股市</span>
+        </div>
+        <div class="col-sm-2">
+            <img src="picture/query_stats.png" alt="投資建議" width="30">
+            <span>投資建議</span>
+        </div>
+        <div class="col-sm-2">
+            <img src="picture/favorite.png" alt="我的最愛" width="30">
+            <span>我的最愛</span>
+        </div>
+        <div class="col-sm-2">
+            <img src="picture/person.png" alt="帳戶" width="30">
+            <span>帳戶</span>
+        </div>
+    </div>
+
+    <!-- 搜尋框 -->
+    <form class="search-bar" action="/">
+        <input type="text" placeholder="搜尋股票名稱/代碼" name="search">
+        <button type="submit"><img src="picture/search.png" alt="搜尋" style="width: 25%;"></button>
+    </form>
+
+    <!-- 內容區域 -->
+    <div class="container">
+        <div class="col-lg-6" id="container-center">
+            放今日推薦注意股票資訊<br>例如: 暴漲或暴跌的股票之類的
+        </div>
+        <div class="col-lg-3" id="container-right">
+            關注股票的現況<br>關注的股票今日的漲跌
+        </div>
+    </div>
+
+    <!-- 股票新聞區 -->
+    <div class="container" id="stock-news">
+        股市新聞
+    </div>
+
 </body>
 </html>

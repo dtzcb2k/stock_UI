@@ -1,22 +1,23 @@
 <!DOCTYPE html>
+
 <html lang="zh-TW">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>今日股市</title>
-    <!-- 引入 Bootstrap CSS -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <!-- 引入 Bootstrap 和 jQuery 的 JavaScript -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
-    <link rel="stylesheet" href="../Css/Function.css">
-    <script src="../Function/Function.js"></script>
-    <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>今日股市</title>
+<!-- 引入 Bootstrap CSS -->
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet"/>
+<!-- 引入 Bootstrap 和 jQuery 的 JavaScript -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+<link href="../Css/Function.css" rel="stylesheet"/>
+<script src="../Function/Function.js"></script>
+<style>
         body {
             background-color: #B0E0E6;
         }
 
-        .stock-table {
+        .stock_table {
             margin: 20px auto 0 auto;
             background-color: #FFFFFF;
             border-radius: 10px;
@@ -31,133 +32,8092 @@
     </style>
 </head>
 <body>
-
-    <!-- 頂部導航欄 -->
-    <div class="container-fluid">
-        <div class="col-sm-2">
-            <img src="../picture/feedback.png" alt="近期公告" width="30">
-            <span>近期公告</span>
-        </div>
-        <div class="col-sm-2">
-            <img src="../picture/breaking_news.png" alt="財政報表查詢" width="30">
-            <span>財政報表查詢</span>
-        </div>
-        <div class="col-sm-2">
-            <img src="../picture/monitoring.png" alt="今日股市" width="30">
-            <span>今日股市</span>
-        </div>
-        <div class="col-sm-2">
-            <img src="../picture/query_stats.png" alt="投資建議" width="30">
-            <span>投資建議</span>
-        </div>
-        <div class="col-sm-2">
-            <img src="../picture/favorite.png" alt="我的最愛" width="30">
-            <span>我的最愛</span>
-        </div>
-        <div class="col-sm-2">
-            <img src="../picture/person.png" alt="帳戶" width="30">
-            <span>帳戶</span>
-        </div>
-    </div>
-    <div class="title">
-        <h1 ><b>今日股市</b></h1>
-    </div>
-
-    <!-- 搜尋框  如果要做到按按鈕執行，就不能用form包住他-->
-    <div class="search-bar" action="/">
-        <input type="text" placeholder="搜尋股票名稱/代碼" name="search" id="search_name" >
-        <button type="submit" onclick="Search_stock()"><img src="../picture/search.png" alt="搜尋" style="width: 25%;"></button>
-    </div>
-
-<!-- 股票資料表格 -->
-<div class="stock-table">
-    <table class="table table-bordered text-center" id="stock_table">
-        <thead class="thead-light">
-            <tr>
-                <th scope="col">加入我的最愛</th>
-                <th scope="col">股票名稱/代號</th>
-                <th scope="col">股價</th>
-                <th scope="col">漲跌</th>
-                <th scope="col">漲跌幅(%)</th>
-                <th scope="col">開盤</th>
-                <th scope="col">昨收</th>
-                <th scope="col">最高</th>
-                <th scope="col">最低</th>
-                <th scope="col">成交量(張)</th>
-                <th scope="col">時間</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><input type="checkbox"></td>
-                <td>味全<br>1201.TW</td>
-                <td>18.45</td>
-                <td class="text-danger">▼ 0.25</td>
-                <td class="text-danger">-1.37%</td>
-                <td>18.25</td>
-                <td>18.20</td>
-                <td>18.45</td>
-                <td>18.15</td>
-                <td>1,167</td>
-                <td>14:30</td>
-            </tr>
-            <tr>
-                <td><input type="checkbox"></td>
-                <td>味王<br>1203.TW</td>
-                <td>48.60</td>
-                <td class="text-success">▲ 1.05</td>
-                <td class="text-success">+2.11%</td>
-                <td>49.20</td>
-                <td>49.65</td>
-                <td>49.20</td>
-                <td>48.50</td>
-                <td>5</td>
-                <td>13:30</td>
-            </tr>
-            <tr>
-                <td><input type="checkbox"></td>
-                <td>大成<br>1210.TW</td>
-                <td>51.90</td>
-                <td class="text-danger">▼ 0.20</td>
-                <td class="text-danger">-0.39%</td>
-                <td>51.70</td>
-                <td>51.70</td>
-                <td>52.00</td>
-                <td>51.50</td>
-                <td>661</td>
-                <td>14:30</td>
-            </tr>
-            <tr>
-                <td><input type="checkbox"></td>
-                <td>大飲<br>1213.TW</td>
-                <td>12.00</td>
-                <td>0.00</td>
-                <td>0.00%</td>
-                <td>12.00</td>
-                <td>12.00</td>
-                <td>12.00</td>
-                <td>11.90</td>
-                <td>38</td>
-                <td>13:30</td>
-            </tr>
-            <tr>
-                <td><input type="checkbox"></td>
-                <td>卜蜂<br>1215.TW</td>
-                <td>96.80</td>
-                <td class="text-success">▲ 0.50</td>
-                <td class="text-success">+0.51%</td>
-                <td>97.30</td>
-                <td>97.30</td>
-                <td>97.30</td>
-                <td>96.80</td>
-                <td>329</td>
-                <td>13:30</td>
-            </tr>
-        </tbody>
-    </table>
+<!-- 頂部導航欄 -->
+<div class="container-fluid">
+<div class="col-sm-2">
+<img alt="近期公告" src="../picture/feedback.png" width="30"/>
+<span>近期公告</span>
 </div>
+<div class="col-sm-2">
+<img alt="財政報表查詢" src="../picture/breaking_news.png" width="30"/>
+<span>財政報表查詢</span>
+</div>
+<div class="col-sm-2">
+<img alt="今日股市" src="../picture/monitoring.png" width="30"/>
+<span>今日股市</span>
+</div>
+<div class="col-sm-2">
+<img alt="投資建議" src="../picture/query_stats.png" width="30"/>
+<span>投資建議</span>
+</div>
+<div class="col-sm-2">
+<img alt="我的最愛" src="../picture/favorite.png" width="30"/>
+<span>我的最愛</span>
+</div>
+<div class="col-sm-2">
+<img alt="帳戶" src="../picture/person.png" width="30"/>
+<span>帳戶</span>
+</div>
+</div>
+<div class="title">
+<h1><b>今日股市</b></h1>
+</div>
+<!-- 搜尋框  如果要做到按按鈕執行，就不能用form包住他-->
+<div action="/" class="search-bar">
+<input id="search_name" name="search" placeholder="搜尋股票名稱/代碼" type="text"/>
+<button onclick="Search_stock()" type="submit"><img alt="搜尋" src="../picture/search.png" style="width: 25%;"/></button>
+</div>
+<!-- 股票資料表格 -->
+<div class="stock_table">
+<table class="table table-bordered text-center">
+<thead class="thead_light" style="position: sticky; top: 10%;background-color:white">
+<tr>
+<th scope="col">加入我的最愛</th>
+<th scope="col">股票名稱/代碼</th>
+<th scope="col">成交金額</th>
+<th scope="col">漲跌</th>
+<th scope="col">開盤</th>
+<th scope="col">昨收</th>
+<th scope="col">最高</th>
+<th scope="col">最低</th>
+<th scope="col">成交量(張)</th>
+<th scope="col">時間</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><input type="checkbox"/></td>
+<td>台泥<br/>1101.TW</td>
+<td>510166688.0</td>
+<td class="text-success">0.1</td>
+<td>33.3</td>
+<td>33.5</td>
+<td>33.75</td>
+<td>33.05</td>
+<td>15250114.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>亞泥<br/>1102.TW</td>
+<td>258718974.0</td>
+<td class="text-danger">-0.25</td>
+<td>42.0</td>
+<td>42.05</td>
+<td>42.2</td>
+<td>41.8</td>
+<td>6160229.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>嘉泥<br/>1103.TW</td>
+<td>2471950.0</td>
+<td class="text-danger">0.0</td>
+<td>17.8</td>
+<td>17.95</td>
+<td>17.95</td>
+<td>17.65</td>
+<td>138878.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>環泥<br/>1104.TW</td>
+<td>4049457.0</td>
+<td class="text-danger">-0.05</td>
+<td>29.15</td>
+<td>29.25</td>
+<td>29.3</td>
+<td>28.95</td>
+<td>138862.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>幸福<br/>1108.TW</td>
+<td>1146400.0</td>
+<td class="text-danger">0.0</td>
+<td>14.45</td>
+<td>14.45</td>
+<td>14.55</td>
+<td>14.45</td>
+<td>79254.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>信大<br/>1109.TW</td>
+<td>1696482.0</td>
+<td class="text-success">0.05</td>
+<td>18.2</td>
+<td>18.35</td>
+<td>18.35</td>
+<td>18.15</td>
+<td>92758.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>東泥<br/>1110.TW</td>
+<td>6442847.0</td>
+<td class="text-success">0.1</td>
+<td>20.9</td>
+<td>21.3</td>
+<td>21.3</td>
+<td>20.85</td>
+<td>306151.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>味全<br/>1201.TW</td>
+<td>5783908.0</td>
+<td class="text-danger">0.0</td>
+<td>18.2</td>
+<td>18.3</td>
+<td>18.5</td>
+<td>18.1</td>
+<td>315728.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>味王<br/>1203.TW</td>
+<td>5792280.0</td>
+<td class="text-danger">-0.75</td>
+<td>42.7</td>
+<td>42.2</td>
+<td>42.7</td>
+<td>42.0</td>
+<td>137318.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>大成<br/>1210.TW</td>
+<td>47708711.0</td>
+<td class="text-success">0.1</td>
+<td>52.8</td>
+<td>53.3</td>
+<td>53.3</td>
+<td>52.2</td>
+<td>900137.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>卜蜂<br/>1215.TW</td>
+<td>15492220.0</td>
+<td class="text-danger">-0.8</td>
+<td>99.5</td>
+<td>99.0</td>
+<td>99.7</td>
+<td>98.7</td>
+<td>156497.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>統一<br/>1216.TW</td>
+<td>636030323.0</td>
+<td class="text-danger">-1.4</td>
+<td>84.8</td>
+<td>84.5</td>
+<td>85.8</td>
+<td>84.5</td>
+<td>7503887.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>泰山<br/>1218.TW</td>
+<td>8840578.0</td>
+<td class="text-danger">0.0</td>
+<td>21.05</td>
+<td>21.15</td>
+<td>21.15</td>
+<td>20.9</td>
+<td>419445.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>福懋油<br/>1225.TW</td>
+<td>1645559.0</td>
+<td class="text-danger">-0.4</td>
+<td>79.0</td>
+<td>79.9</td>
+<td>81.0</td>
+<td>78.1</td>
+<td>20680.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>佳格<br/>1227.TW</td>
+<td>14284580.0</td>
+<td class="text-danger">0.0</td>
+<td>37.4</td>
+<td>37.55</td>
+<td>37.7</td>
+<td>37.3</td>
+<td>380979.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>聯華<br/>1229.TW</td>
+<td>47713772.0</td>
+<td class="text-success">0.9</td>
+<td>57.3</td>
+<td>58.6</td>
+<td>58.6</td>
+<td>56.9</td>
+<td>824328.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>聯華食<br/>1231.TW</td>
+<td>19050695.0</td>
+<td class="text-danger">-0.5</td>
+<td>120.0</td>
+<td>119.5</td>
+<td>120.0</td>
+<td>118.5</td>
+<td>159780.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>大統益<br/>1232.TW</td>
+<td>3234344.0</td>
+<td class="text-danger">0.0</td>
+<td>145.0</td>
+<td>146.5</td>
+<td>146.5</td>
+<td>145.0</td>
+<td>22185.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>黑松<br/>1234.TW</td>
+<td>5052994.0</td>
+<td class="text-success">0.05</td>
+<td>41.3</td>
+<td>41.55</td>
+<td>41.95</td>
+<td>41.3</td>
+<td>121759.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>興泰<br/>1235.TW</td>
+<td>1109932.0</td>
+<td class="text-danger">0.0</td>
+<td>145.5</td>
+<td>146.5</td>
+<td>151.5</td>
+<td>145.5</td>
+<td>7528.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>鮮活果汁-KY<br/>1256.TW</td>
+<td>4390644.0</td>
+<td class="text-danger">-2.0</td>
+<td>133.5</td>
+<td>134.0</td>
+<td>135.0</td>
+<td>131.0</td>
+<td>33005.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>台塑<br/>1301.TW</td>
+<td>1291648240.0</td>
+<td class="text-danger">-1.35</td>
+<td>42.5</td>
+<td>41.35</td>
+<td>42.5</td>
+<td>41.25</td>
+<td>31060654.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>南亞<br/>1303.TW</td>
+<td>365995483.0</td>
+<td class="text-danger">-0.55</td>
+<td>38.85</td>
+<td>38.7</td>
+<td>38.95</td>
+<td>38.35</td>
+<td>9461305.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>台聚<br/>1304.TW</td>
+<td>27513619.0</td>
+<td class="text-danger">-0.2</td>
+<td>12.9</td>
+<td>12.8</td>
+<td>12.9</td>
+<td>12.7</td>
+<td>2150384.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>華夏<br/>1305.TW</td>
+<td>22474191.0</td>
+<td class="text-danger">-0.25</td>
+<td>13.8</td>
+<td>13.55</td>
+<td>13.8</td>
+<td>13.3</td>
+<td>1665156.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>三芳<br/>1307.TW</td>
+<td>82803480.0</td>
+<td class="text-success">1.15</td>
+<td>39.4</td>
+<td>40.2</td>
+<td>40.3</td>
+<td>39.15</td>
+<td>2078886.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>亞聚<br/>1308.TW</td>
+<td>23589876.0</td>
+<td class="text-danger">-0.35</td>
+<td>16.45</td>
+<td>16.1</td>
+<td>16.45</td>
+<td>16.0</td>
+<td>1458552.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>台達化<br/>1309.TW</td>
+<td>9730181.0</td>
+<td class="text-success">0.15</td>
+<td>16.1</td>
+<td>16.15</td>
+<td>16.25</td>
+<td>15.8</td>
+<td>605393.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>台苯<br/>1310.TW</td>
+<td>6021946.0</td>
+<td class="text-success">0.05</td>
+<td>11.35</td>
+<td>11.45</td>
+<td>11.5</td>
+<td>11.3</td>
+<td>529610.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>國喬<br/>1312.TW</td>
+<td>24774905.0</td>
+<td class="text-danger">-0.15</td>
+<td>11.45</td>
+<td>11.45</td>
+<td>11.55</td>
+<td>11.35</td>
+<td>2163517.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>聯成<br/>1313.TW</td>
+<td>9064611.0</td>
+<td class="text-danger">0.0</td>
+<td>10.6</td>
+<td>10.65</td>
+<td>10.75</td>
+<td>10.5</td>
+<td>851735.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>中石化<br/>1314.TW</td>
+<td>59809612.0</td>
+<td class="text-success">0.03</td>
+<td>8.1</td>
+<td>8.15</td>
+<td>8.17</td>
+<td>8.02</td>
+<td>7377347.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>達新<br/>1315.TW</td>
+<td>656182.0</td>
+<td class="text-danger">-0.2</td>
+<td>70.0</td>
+<td>70.3</td>
+<td>70.3</td>
+<td>70.0</td>
+<td>9353.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>東陽<br/>1319.TW</td>
+<td>548446720.0</td>
+<td class="text-success">1.0</td>
+<td>116.5</td>
+<td>118.5</td>
+<td>119.5</td>
+<td>115.5</td>
+<td>4656439.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>大洋<br/>1321.TW</td>
+<td>11184061.0</td>
+<td class="text-danger">-0.05</td>
+<td>32.95</td>
+<td>32.95</td>
+<td>33.1</td>
+<td>32.75</td>
+<td>339660.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>台化<br/>1326.TW</td>
+<td>451312045.0</td>
+<td class="text-danger">-0.95</td>
+<td>34.35</td>
+<td>33.85</td>
+<td>34.35</td>
+<td>33.8</td>
+<td>13281234.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>八貫<br/>1342.TW</td>
+<td>7549983.0</td>
+<td class="text-success">0.1</td>
+<td>99.7</td>
+<td>100.0</td>
+<td>100.5</td>
+<td>99.1</td>
+<td>75481.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>遠東新<br/>1402.TW</td>
+<td>424588441.0</td>
+<td class="text-danger">-0.7</td>
+<td>33.9</td>
+<td>33.4</td>
+<td>34.0</td>
+<td>33.4</td>
+<td>12627844.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>新纖<br/>1409.TW</td>
+<td>44763154.0</td>
+<td class="text-success">0.15</td>
+<td>16.0</td>
+<td>16.05</td>
+<td>16.05</td>
+<td>15.85</td>
+<td>2800211.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>新紡<br/>1419.TW</td>
+<td>1206157.0</td>
+<td class="text-danger">-0.15</td>
+<td>45.2</td>
+<td>45.5</td>
+<td>45.95</td>
+<td>45.2</td>
+<td>26583.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>福懋<br/>1434.TW</td>
+<td>14590568.0</td>
+<td class="text-danger">0.0</td>
+<td>20.1</td>
+<td>20.25</td>
+<td>20.25</td>
+<td>19.85</td>
+<td>726337.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>中福<br/>1435.TW</td>
+<td>205521.0</td>
+<td class="text-danger">-1.7</td>
+<td>41.25</td>
+<td>39.95</td>
+<td>41.3</td>
+<td>39.95</td>
+<td>5049.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>華友聯<br/>1436.TW</td>
+<td>32120391.0</td>
+<td class="text-success">1.5</td>
+<td>123.5</td>
+<td>125.0</td>
+<td>125.5</td>
+<td>121.5</td>
+<td>259169.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>勤益控<br/>1437.TW</td>
+<td>2327062.0</td>
+<td class="text-success">0.05</td>
+<td>34.1</td>
+<td>34.25</td>
+<td>34.4</td>
+<td>33.8</td>
+<td>68176.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>南紡<br/>1440.TW</td>
+<td>5961990.0</td>
+<td class="text-success">0.05</td>
+<td>15.0</td>
+<td>15.2</td>
+<td>15.2</td>
+<td>14.95</td>
+<td>394724.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>名軒<br/>1442.TW</td>
+<td>291698463.0</td>
+<td class="text-success">0.2</td>
+<td>81.2</td>
+<td>81.4</td>
+<td>82.7</td>
+<td>80.2</td>
+<td>3569852.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>力麗<br/>1444.TW</td>
+<td>5578850.0</td>
+<td class="text-success">0.03</td>
+<td>9.14</td>
+<td>9.18</td>
+<td>9.19</td>
+<td>9.07</td>
+<td>611602.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>宏和<br/>1446.TW</td>
+<td>82126966.0</td>
+<td class="text-success">0.7</td>
+<td>54.1</td>
+<td>54.8</td>
+<td>55.4</td>
+<td>53.9</td>
+<td>1494112.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>力鵬<br/>1447.TW</td>
+<td>3371734.0</td>
+<td class="text-success">0.02</td>
+<td>7.69</td>
+<td>7.76</td>
+<td>7.8</td>
+<td>7.67</td>
+<td>435060.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>集盛<br/>1455.TW</td>
+<td>6169298.0</td>
+<td class="text-success">0.01</td>
+<td>9.99</td>
+<td>10.0</td>
+<td>10.0</td>
+<td>9.84</td>
+<td>622014.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>宜進<br/>1457.TW</td>
+<td>3084860.0</td>
+<td class="text-success">0.15</td>
+<td>19.3</td>
+<td>19.65</td>
+<td>19.65</td>
+<td>19.3</td>
+<td>158023.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>儒鴻<br/>1476.TW</td>
+<td>228315744.0</td>
+<td class="text-danger">-3.0</td>
+<td>527.0</td>
+<td>530.0</td>
+<td>534.0</td>
+<td>523.0</td>
+<td>431700.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>聚陽<br/>1477.TW</td>
+<td>252882316.0</td>
+<td class="text-success">5.0</td>
+<td>315.5</td>
+<td>320.5</td>
+<td>322.5</td>
+<td>313.0</td>
+<td>791558.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>士電<br/>1503.TW</td>
+<td>174770665.0</td>
+<td class="text-success">1.5</td>
+<td>194.0</td>
+<td>198.5</td>
+<td>198.5</td>
+<td>192.5</td>
+<td>894073.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>東元<br/>1504.TW</td>
+<td>304673662.0</td>
+<td class="text-success">0.3</td>
+<td>52.3</td>
+<td>53.1</td>
+<td>53.1</td>
+<td>52.0</td>
+<td>5783642.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>中興電<br/>1513.TW</td>
+<td>348779603.0</td>
+<td class="text-success">0.5</td>
+<td>156.0</td>
+<td>158.0</td>
+<td>158.5</td>
+<td>154.5</td>
+<td>2221663.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>亞力<br/>1514.TW</td>
+<td>125252021.0</td>
+<td class="text-danger">-0.5</td>
+<td>109.0</td>
+<td>109.0</td>
+<td>109.5</td>
+<td>107.5</td>
+<td>1155229.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>力山<br/>1515.TW</td>
+<td>3896303.0</td>
+<td class="text-success">0.1</td>
+<td>31.0</td>
+<td>31.4</td>
+<td>31.4</td>
+<td>30.6</td>
+<td>125300.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>華城<br/>1519.TW</td>
+<td>1667966328.0</td>
+<td class="text-success">7.0</td>
+<td>540.0</td>
+<td>550.0</td>
+<td>552.0</td>
+<td>534.0</td>
+<td>3079267.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>堤維西<br/>1522.TW</td>
+<td>164005726.0</td>
+<td class="text-success">1.4</td>
+<td>63.1</td>
+<td>64.8</td>
+<td>65.2</td>
+<td>62.8</td>
+<td>2553197.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>勤美<br/>1532.TW</td>
+<td>68385737.0</td>
+<td class="text-success">0.65</td>
+<td>33.0</td>
+<td>33.65</td>
+<td>33.7</td>
+<td>32.65</td>
+<td>2057008.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>中宇<br/>1535.TW</td>
+<td>1992111.0</td>
+<td class="text-success">0.6</td>
+<td>60.3</td>
+<td>61.4</td>
+<td>61.4</td>
+<td>60.3</td>
+<td>32712.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>和大<br/>1536.TW</td>
+<td>918221529.0</td>
+<td class="text-success">4.3</td>
+<td>60.3</td>
+<td>64.6</td>
+<td>64.7</td>
+<td>60.3</td>
+<td>14731979.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>廣隆<br/>1537.TW</td>
+<td>63069978.0</td>
+<td class="text-danger">0.0</td>
+<td>158.0</td>
+<td>158.0</td>
+<td>159.5</td>
+<td>156.5</td>
+<td>399064.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>伸興<br/>1558.TW</td>
+<td>3255090.0</td>
+<td class="text-success">0.5</td>
+<td>103.0</td>
+<td>103.5</td>
+<td>104.0</td>
+<td>102.0</td>
+<td>31500.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>中砂<br/>1560.TW</td>
+<td>312773587.0</td>
+<td class="text-success">5.5</td>
+<td>291.5</td>
+<td>298.0</td>
+<td>298.0</td>
+<td>287.0</td>
+<td>1067651.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>巧新<br/>1563.TW</td>
+<td>37711221.0</td>
+<td class="text-danger">-1.2</td>
+<td>60.1</td>
+<td>59.2</td>
+<td>60.2</td>
+<td>59.2</td>
+<td>632583.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>信錦<br/>1582.TW</td>
+<td>112478851.0</td>
+<td class="text-success">0.9</td>
+<td>89.9</td>
+<td>90.9</td>
+<td>91.1</td>
+<td>89.4</td>
+<td>1244618.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>程泰<br/>1583.TW</td>
+<td>368777.0</td>
+<td class="text-danger">0.0</td>
+<td>59.8</td>
+<td>60.1</td>
+<td>60.5</td>
+<td>59.8</td>
+<td>6141.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>亞德客-KY<br/>1590.TW</td>
+<td>409206009.0</td>
+<td class="text-danger">-11.0</td>
+<td>791.0</td>
+<td>790.0</td>
+<td>799.0</td>
+<td>779.0</td>
+<td>517661.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>直得<br/>1597.TW</td>
+<td>46370868.0</td>
+<td class="text-success">0.8</td>
+<td>88.1</td>
+<td>88.8</td>
+<td>89.2</td>
+<td>87.1</td>
+<td>525963.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>華電<br/>1603.TW</td>
+<td>7383152.0</td>
+<td class="text-success">0.2</td>
+<td>37.3</td>
+<td>37.5</td>
+<td>37.85</td>
+<td>37.1</td>
+<td>196654.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>聲寶<br/>1604.TW</td>
+<td>5337742.0</td>
+<td class="text-success">0.15</td>
+<td>28.15</td>
+<td>28.35</td>
+<td>28.35</td>
+<td>28.05</td>
+<td>188758.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>華新<br/>1605.TW</td>
+<td>772021322.0</td>
+<td class="text-danger">-0.45</td>
+<td>26.25</td>
+<td>26.1</td>
+<td>26.55</td>
+<td>25.7</td>
+<td>29512498.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>華榮<br/>1608.TW</td>
+<td>25958859.0</td>
+<td class="text-success">0.15</td>
+<td>28.3</td>
+<td>28.6</td>
+<td>28.6</td>
+<td>28.0</td>
+<td>918278.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>大亞<br/>1609.TW</td>
+<td>110335396.0</td>
+<td class="text-success">0.65</td>
+<td>45.25</td>
+<td>45.85</td>
+<td>45.85</td>
+<td>44.65</td>
+<td>2435140.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>中電<br/>1611.TW</td>
+<td>61287013.0</td>
+<td class="text-success">0.45</td>
+<td>16.65</td>
+<td>17.35</td>
+<td>17.85</td>
+<td>16.5</td>
+<td>3548479.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>宏泰<br/>1612.TW</td>
+<td>12204527.0</td>
+<td class="text-success">0.15</td>
+<td>34.5</td>
+<td>34.6</td>
+<td>34.65</td>
+<td>34.05</td>
+<td>354865.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>三洋電<br/>1614.TW</td>
+<td>1264225.0</td>
+<td class="text-danger">0.0</td>
+<td>39.0</td>
+<td>39.15</td>
+<td>39.35</td>
+<td>38.85</td>
+<td>32370.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>大山<br/>1615.TW</td>
+<td>2755490.0</td>
+<td class="text-success">0.1</td>
+<td>57.7</td>
+<td>58.4</td>
+<td>58.9</td>
+<td>56.7</td>
+<td>47178.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>合機<br/>1618.TW</td>
+<td>46619501.0</td>
+<td class="text-success">0.45</td>
+<td>45.5</td>
+<td>47.0</td>
+<td>47.25</td>
+<td>45.5</td>
+<td>1000704.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>南僑<br/>1702.TW</td>
+<td>17445765.0</td>
+<td class="text-danger">0.0</td>
+<td>52.8</td>
+<td>53.0</td>
+<td>53.6</td>
+<td>52.5</td>
+<td>328612.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>葡萄王<br/>1707.TW</td>
+<td>21824028.0</td>
+<td class="text-danger">0.0</td>
+<td>154.0</td>
+<td>155.0</td>
+<td>155.5</td>
+<td>153.5</td>
+<td>140999.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>東鹼<br/>1708.TW</td>
+<td>48575653.0</td>
+<td class="text-success">0.6</td>
+<td>40.8</td>
+<td>41.8</td>
+<td>41.85</td>
+<td>40.8</td>
+<td>1175502.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>和益<br/>1709.TW</td>
+<td>8611113.0</td>
+<td class="text-danger">-0.05</td>
+<td>21.45</td>
+<td>21.45</td>
+<td>21.5</td>
+<td>21.3</td>
+<td>402149.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>東聯<br/>1710.TW</td>
+<td>9928883.0</td>
+<td class="text-success">0.05</td>
+<td>16.1</td>
+<td>16.2</td>
+<td>16.2</td>
+<td>16.0</td>
+<td>616097.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>永光<br/>1711.TW</td>
+<td>32772189.0</td>
+<td class="text-success">0.1</td>
+<td>22.45</td>
+<td>22.55</td>
+<td>22.55</td>
+<td>22.15</td>
+<td>1465665.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>興農<br/>1712.TW</td>
+<td>11079779.0</td>
+<td class="text-success">0.2</td>
+<td>44.6</td>
+<td>45.25</td>
+<td>45.3</td>
+<td>44.55</td>
+<td>246201.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>國化<br/>1713.TW</td>
+<td>2740879.0</td>
+<td class="text-danger">0.0</td>
+<td>46.35</td>
+<td>46.6</td>
+<td>47.15</td>
+<td>46.0</td>
+<td>59018.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>和桐<br/>1714.TW</td>
+<td>3379489.0</td>
+<td class="text-success">0.02</td>
+<td>8.44</td>
+<td>8.46</td>
+<td>8.48</td>
+<td>8.38</td>
+<td>400659.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>長興<br/>1717.TW</td>
+<td>36987310.0</td>
+<td class="text-success">0.35</td>
+<td>29.3</td>
+<td>29.8</td>
+<td>29.8</td>
+<td>29.2</td>
+<td>1250555.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>中纖<br/>1718.TW</td>
+<td>15496568.0</td>
+<td class="text-danger">-0.04</td>
+<td>8.22</td>
+<td>8.19</td>
+<td>8.25</td>
+<td>8.14</td>
+<td>1890848.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>生達<br/>1720.TW</td>
+<td>21007585.0</td>
+<td class="text-success">1.3</td>
+<td>63.5</td>
+<td>64.9</td>
+<td>65.0</td>
+<td>63.4</td>
+<td>325358.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>台肥<br/>1722.TW</td>
+<td>70503229.0</td>
+<td class="text-danger">-0.9</td>
+<td>55.8</td>
+<td>55.9</td>
+<td>55.9</td>
+<td>55.1</td>
+<td>1266856.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>中碳<br/>1723.TW</td>
+<td>17633477.0</td>
+<td class="text-success">0.1</td>
+<td>96.8</td>
+<td>97.1</td>
+<td>97.1</td>
+<td>95.4</td>
+<td>182948.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>元禎<br/>1725.TW</td>
+<td>1957728.0</td>
+<td class="text-success">0.3</td>
+<td>40.1</td>
+<td>41.1</td>
+<td>41.95</td>
+<td>39.7</td>
+<td>48160.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>永記<br/>1726.TW</td>
+<td>2364900.0</td>
+<td class="text-success">0.4</td>
+<td>76.0</td>
+<td>76.7</td>
+<td>76.9</td>
+<td>76.0</td>
+<td>31000.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>喬山<br/>1736.TW</td>
+<td>61262336.0</td>
+<td class="text-success">3.0</td>
+<td>152.0</td>
+<td>157.5</td>
+<td>157.5</td>
+<td>151.5</td>
+<td>393300.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>臺鹽<br/>1737.TW</td>
+<td>2869569.0</td>
+<td class="text-danger">-0.05</td>
+<td>32.25</td>
+<td>32.2</td>
+<td>32.4</td>
+<td>32.15</td>
+<td>89056.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>寶齡富錦<br/>1760.TW</td>
+<td>24903747.0</td>
+<td class="text-success">2.0</td>
+<td>88.0</td>
+<td>90.9</td>
+<td>92.0</td>
+<td>88.0</td>
+<td>274423.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>勝一<br/>1773.TW</td>
+<td>21035444.0</td>
+<td class="text-success">1.0</td>
+<td>165.0</td>
+<td>166.0</td>
+<td>167.0</td>
+<td>163.0</td>
+<td>127106.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>科妍<br/>1786.TW</td>
+<td>37866626.0</td>
+<td class="text-success">1.0</td>
+<td>90.9</td>
+<td>91.7</td>
+<td>92.5</td>
+<td>89.6</td>
+<td>413883.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>神隆<br/>1789.TW</td>
+<td>4927794.0</td>
+<td class="text-danger">0.0</td>
+<td>23.2</td>
+<td>23.4</td>
+<td>23.5</td>
+<td>23.05</td>
+<td>211169.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>美時<br/>1795.TW</td>
+<td>2090049066.0</td>
+<td class="text-success">14.5</td>
+<td>278.5</td>
+<td>291.5</td>
+<td>293.0</td>
+<td>275.5</td>
+<td>7224254.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>台玻<br/>1802.TW</td>
+<td>339172027.0</td>
+<td class="text-success">0.75</td>
+<td>19.3</td>
+<td>20.2</td>
+<td>20.35</td>
+<td>19.15</td>
+<td>16998445.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>潤隆<br/>1808.TW</td>
+<td>95333164.0</td>
+<td class="text-success">0.65</td>
+<td>40.4</td>
+<td>41.3</td>
+<td>41.3</td>
+<td>39.9</td>
+<td>2332652.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>士紙<br/>1903.TW</td>
+<td>3789604.0</td>
+<td class="text-success">0.8</td>
+<td>53.3</td>
+<td>54.1</td>
+<td>54.3</td>
+<td>53.2</td>
+<td>70333.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>正隆<br/>1904.TW</td>
+<td>21516348.0</td>
+<td class="text-danger">-0.25</td>
+<td>21.8</td>
+<td>21.7</td>
+<td>21.85</td>
+<td>21.65</td>
+<td>990691.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>華紙<br/>1905.TW</td>
+<td>10153152.0</td>
+<td class="text-danger">-0.1</td>
+<td>17.8</td>
+<td>17.85</td>
+<td>17.9</td>
+<td>17.65</td>
+<td>571530.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>永豐餘<br/>1907.TW</td>
+<td>11517410.0</td>
+<td class="text-danger">-0.05</td>
+<td>30.3</td>
+<td>30.5</td>
+<td>30.6</td>
+<td>30.15</td>
+<td>379382.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>榮成<br/>1909.TW</td>
+<td>10480620.0</td>
+<td class="text-success">0.05</td>
+<td>12.25</td>
+<td>12.35</td>
+<td>12.4</td>
+<td>12.15</td>
+<td>854100.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>中鋼<br/>2002.TW</td>
+<td>522809244.0</td>
+<td class="text-danger">-0.55</td>
+<td>21.55</td>
+<td>21.2</td>
+<td>21.55</td>
+<td>21.2</td>
+<td>24531691.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>東和鋼鐵<br/>2006.TW</td>
+<td>56846316.0</td>
+<td class="text-danger">-0.5</td>
+<td>71.2</td>
+<td>70.5</td>
+<td>71.2</td>
+<td>70.5</td>
+<td>803287.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>第一銅<br/>2009.TW</td>
+<td>12315302.0</td>
+<td class="text-success">0.15</td>
+<td>39.45</td>
+<td>39.55</td>
+<td>39.55</td>
+<td>39.0</td>
+<td>312674.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>春源<br/>2010.TW</td>
+<td>8051241.0</td>
+<td class="text-danger">-0.05</td>
+<td>18.35</td>
+<td>18.45</td>
+<td>18.55</td>
+<td>18.35</td>
+<td>436313.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>春雨<br/>2012.TW</td>
+<td>5207976.0</td>
+<td class="text-danger">-0.15</td>
+<td>26.3</td>
+<td>26.45</td>
+<td>26.65</td>
+<td>26.3</td>
+<td>196784.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>中鋼構<br/>2013.TW</td>
+<td>1389720.0</td>
+<td class="text-danger">0.0</td>
+<td>52.5</td>
+<td>53.0</td>
+<td>53.2</td>
+<td>52.3</td>
+<td>26338.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>中鴻<br/>2014.TW</td>
+<td>48946115.0</td>
+<td class="text-danger">-0.25</td>
+<td>19.75</td>
+<td>19.7</td>
+<td>19.75</td>
+<td>19.5</td>
+<td>2494056.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>豐興<br/>2015.TW</td>
+<td>22158292.0</td>
+<td class="text-danger">-0.3</td>
+<td>75.0</td>
+<td>74.9</td>
+<td>76.0</td>
+<td>74.8</td>
+<td>294899.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>官田鋼<br/>2017.TW</td>
+<td>4854474.0</td>
+<td class="text-success">0.05</td>
+<td>11.4</td>
+<td>11.55</td>
+<td>11.55</td>
+<td>11.3</td>
+<td>424700.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>美亞<br/>2020.TW</td>
+<td>8674557.0</td>
+<td class="text-success">0.05</td>
+<td>29.2</td>
+<td>29.35</td>
+<td>29.4</td>
+<td>28.95</td>
+<td>296850.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>燁輝<br/>2023.TW</td>
+<td>22543346.0</td>
+<td class="text-danger">-0.15</td>
+<td>15.25</td>
+<td>15.2</td>
+<td>15.3</td>
+<td>15.15</td>
+<td>1482843.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>大成鋼<br/>2027.TW</td>
+<td>148848630.0</td>
+<td class="text-success">0.1</td>
+<td>34.5</td>
+<td>34.7</td>
+<td>34.9</td>
+<td>34.25</td>
+<td>4306039.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>威致<br/>2028.TW</td>
+<td>1343872.0</td>
+<td class="text-success">0.1</td>
+<td>22.75</td>
+<td>22.6</td>
+<td>22.75</td>
+<td>22.4</td>
+<td>59642.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>盛餘<br/>2029.TW</td>
+<td>4100159.0</td>
+<td class="text-danger">-0.05</td>
+<td>24.8</td>
+<td>24.9</td>
+<td>24.95</td>
+<td>24.75</td>
+<td>165214.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>新光鋼<br/>2031.TW</td>
+<td>19266691.0</td>
+<td class="text-danger">0.0</td>
+<td>49.4</td>
+<td>49.55</td>
+<td>49.55</td>
+<td>48.95</td>
+<td>390830.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>允強<br/>2034.TW</td>
+<td>6383475.0</td>
+<td class="text-danger">-0.2</td>
+<td>20.35</td>
+<td>20.25</td>
+<td>20.4</td>
+<td>20.25</td>
+<td>314110.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>上銀<br/>2049.TW</td>
+<td>266600179.0</td>
+<td class="text-success">6.5</td>
+<td>223.0</td>
+<td>231.5</td>
+<td>232.0</td>
+<td>221.5</td>
+<td>1174567.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>川湖<br/>2059.TW</td>
+<td>1419415210.0</td>
+<td class="text-success">70.0</td>
+<td>1385.0</td>
+<td>1460.0</td>
+<td>1460.0</td>
+<td>1380.0</td>
+<td>990096.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>南港<br/>2101.TW</td>
+<td>164789192.0</td>
+<td class="text-success">1.75</td>
+<td>47.5</td>
+<td>49.1</td>
+<td>49.45</td>
+<td>47.15</td>
+<td>3376157.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>泰豐<br/>2102.TW</td>
+<td>20590934.0</td>
+<td class="text-success">0.35</td>
+<td>21.3</td>
+<td>21.75</td>
+<td>21.8</td>
+<td>21.25</td>
+<td>955317.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>台橡<br/>2103.TW</td>
+<td>15769925.0</td>
+<td class="text-danger">-0.15</td>
+<td>22.9</td>
+<td>22.85</td>
+<td>22.95</td>
+<td>22.7</td>
+<td>690312.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>國際中橡<br/>2104.TW</td>
+<td>6916915.0</td>
+<td class="text-danger">-0.05</td>
+<td>15.15</td>
+<td>15.2</td>
+<td>15.25</td>
+<td>15.1</td>
+<td>456306.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>正新<br/>2105.TW</td>
+<td>351616819.0</td>
+<td class="text-success">0.2</td>
+<td>49.9</td>
+<td>50.6</td>
+<td>51.6</td>
+<td>49.8</td>
+<td>6926394.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>建大<br/>2106.TW</td>
+<td>18595085.0</td>
+<td class="text-danger">-0.05</td>
+<td>28.6</td>
+<td>28.75</td>
+<td>28.8</td>
+<td>28.4</td>
+<td>649567.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>厚生<br/>2107.TW</td>
+<td>1168256.0</td>
+<td class="text-danger">0.0</td>
+<td>25.45</td>
+<td>25.5</td>
+<td>25.6</td>
+<td>25.35</td>
+<td>45809.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>南帝<br/>2108.TW</td>
+<td>5756229.0</td>
+<td class="text-danger">-0.05</td>
+<td>33.8</td>
+<td>33.95</td>
+<td>33.95</td>
+<td>33.3</td>
+<td>170851.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>鑫永銓<br/>2114.TW</td>
+<td>3792708.0</td>
+<td class="text-danger">-0.3</td>
+<td>94.7</td>
+<td>94.4</td>
+<td>94.7</td>
+<td>94.4</td>
+<td>40130.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>裕隆<br/>2201.TW</td>
+<td>74587092.0</td>
+<td class="text-success">0.3</td>
+<td>55.5</td>
+<td>55.8</td>
+<td>55.8</td>
+<td>54.6</td>
+<td>1346518.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>中華<br/>2204.TW</td>
+<td>877383972.0</td>
+<td class="text-success">0.3</td>
+<td>84.0</td>
+<td>84.3</td>
+<td>84.8</td>
+<td>82.4</td>
+<td>10470734.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>三陽工業<br/>2206.TW</td>
+<td>61553512.0</td>
+<td class="text-success">0.8</td>
+<td>69.8</td>
+<td>70.9</td>
+<td>70.9</td>
+<td>69.6</td>
+<td>873115.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>和泰車<br/>2207.TW</td>
+<td>268931292.0</td>
+<td class="text-danger">-9.0</td>
+<td>615.0</td>
+<td>614.0</td>
+<td>620.0</td>
+<td>604.0</td>
+<td>438494.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>台船<br/>2208.TW</td>
+<td>20200432.0</td>
+<td class="text-danger">0.0</td>
+<td>16.65</td>
+<td>16.65</td>
+<td>16.65</td>
+<td>16.5</td>
+<td>1218035.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>長榮鋼<br/>2211.TW</td>
+<td>127084279.0</td>
+<td class="text-danger">-1.3</td>
+<td>101.0</td>
+<td>98.7</td>
+<td>101.0</td>
+<td>98.5</td>
+<td>1281814.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>裕日車<br/>2227.TW</td>
+<td>6135313.0</td>
+<td class="text-danger">-2.4</td>
+<td>90.4</td>
+<td>91.2</td>
+<td>91.2</td>
+<td>90.1</td>
+<td>67723.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>劍麟<br/>2228.TW</td>
+<td>13340623.0</td>
+<td class="text-danger">0.0</td>
+<td>101.5</td>
+<td>103.0</td>
+<td>103.5</td>
+<td>101.5</td>
+<td>129848.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>為升<br/>2231.TW</td>
+<td>42470194.0</td>
+<td class="text-success">0.3</td>
+<td>99.2</td>
+<td>100.0</td>
+<td>101.0</td>
+<td>98.0</td>
+<td>426356.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>宇隆<br/>2233.TW</td>
+<td>326329620.0</td>
+<td class="text-danger">-2.5</td>
+<td>177.0</td>
+<td>174.5</td>
+<td>181.5</td>
+<td>173.0</td>
+<td>1846529.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>汎德永業<br/>2247.TW</td>
+<td>9836642.0</td>
+<td class="text-success">0.5</td>
+<td>288.0</td>
+<td>287.0</td>
+<td>289.0</td>
+<td>286.5</td>
+<td>34255.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>鴻華先進-創<br/>2258.TW</td>
+<td>8218700.0</td>
+<td class="text-danger">-0.95</td>
+<td>41.9</td>
+<td>41.5</td>
+<td>42.0</td>
+<td>40.8</td>
+<td>198000.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>光寶科<br/>2301.TW</td>
+<td>743782907.0</td>
+<td class="text-danger">0.0</td>
+<td>103.0</td>
+<td>104.0</td>
+<td>105.5</td>
+<td>102.5</td>
+<td>7127917.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>台達電<br/>2308.TW</td>
+<td>2473781448.0</td>
+<td class="text-danger">-3.0</td>
+<td>376.5</td>
+<td>381.0</td>
+<td>386.0</td>
+<td>374.5</td>
+<td>6491721.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>金寶<br/>2312.TW</td>
+<td>2763216913.0</td>
+<td class="text-danger">-0.3</td>
+<td>29.7</td>
+<td>29.85</td>
+<td>30.95</td>
+<td>29.45</td>
+<td>91525626.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>華通<br/>2313.TW</td>
+<td>406923076.0</td>
+<td class="text-success">0.4</td>
+<td>59.9</td>
+<td>60.9</td>
+<td>61.0</td>
+<td>59.5</td>
+<td>6753274.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>台揚<br/>2314.TW</td>
+<td>21326469.0</td>
+<td class="text-success">0.4</td>
+<td>30.9</td>
+<td>31.3</td>
+<td>31.95</td>
+<td>30.6</td>
+<td>680950.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>楠梓電<br/>2316.TW</td>
+<td>98207458.0</td>
+<td class="text-success">1.0</td>
+<td>49.9</td>
+<td>51.1</td>
+<td>51.6</td>
+<td>48.65</td>
+<td>1959461.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>鴻海<br/>2317.TW</td>
+<td>9954052225.0</td>
+<td class="text-danger">0.0</td>
+<td>193.5</td>
+<td>195.5</td>
+<td>199.0</td>
+<td>192.5</td>
+<td>50800936.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>中環<br/>2323.TW</td>
+<td>83668443.0</td>
+<td class="text-success">0.05</td>
+<td>11.1</td>
+<td>11.25</td>
+<td>11.35</td>
+<td>11.05</td>
+<td>7460834.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>仁寶<br/>2324.TW</td>
+<td>503726069.0</td>
+<td class="text-danger">-0.15</td>
+<td>36.65</td>
+<td>36.85</td>
+<td>37.25</td>
+<td>36.4</td>
+<td>13673640.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>國巨<br/>2327.TW</td>
+<td>1213978395.0</td>
+<td class="text-success">6.0</td>
+<td>504.0</td>
+<td>514.0</td>
+<td>519.0</td>
+<td>504.0</td>
+<td>2359873.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>廣宇<br/>2328.TW</td>
+<td>52687452.0</td>
+<td class="text-success">0.5</td>
+<td>36.5</td>
+<td>37.25</td>
+<td>37.45</td>
+<td>36.2</td>
+<td>1424325.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>華泰<br/>2329.TW</td>
+<td>42979070.0</td>
+<td class="text-success">0.45</td>
+<td>35.15</td>
+<td>35.6</td>
+<td>35.65</td>
+<td>34.9</td>
+<td>1217173.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>台積電<br/>2330.TW</td>
+<td>43637043385.0</td>
+<td class="text-danger">-9.0</td>
+<td>995.0</td>
+<td>996.0</td>
+<td>1010.0</td>
+<td>994.0</td>
+<td>43621329.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>精英<br/>2331.TW</td>
+<td>15774645.0</td>
+<td class="text-success">0.3</td>
+<td>23.3</td>
+<td>23.8</td>
+<td>23.85</td>
+<td>23.2</td>
+<td>667322.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>友訊<br/>2332.TW</td>
+<td>344630041.0</td>
+<td class="text-success">0.4</td>
+<td>21.0</td>
+<td>21.75</td>
+<td>22.1</td>
+<td>20.95</td>
+<td>15855182.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>旺宏<br/>2337.TW</td>
+<td>93191529.0</td>
+<td class="text-danger">-0.35</td>
+<td>21.0</td>
+<td>20.95</td>
+<td>21.0</td>
+<td>20.7</td>
+<td>4467500.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>光罩<br/>2338.TW</td>
+<td>24459125.0</td>
+<td class="text-danger">-0.4</td>
+<td>54.0</td>
+<td>53.6</td>
+<td>54.0</td>
+<td>52.8</td>
+<td>456108.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>台亞<br/>2340.TW</td>
+<td>17888676.0</td>
+<td class="text-success">0.35</td>
+<td>30.3</td>
+<td>30.7</td>
+<td>30.8</td>
+<td>30.1</td>
+<td>585061.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>華邦電<br/>2344.TW</td>
+<td>391995554.0</td>
+<td class="text-danger">0.0</td>
+<td>16.05</td>
+<td>16.05</td>
+<td>16.25</td>
+<td>15.9</td>
+<td>24366264.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>智邦<br/>2345.TW</td>
+<td>2659178062.0</td>
+<td class="text-success">10.0</td>
+<td>635.0</td>
+<td>657.0</td>
+<td>663.0</td>
+<td>634.0</td>
+<td>4082417.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>聯強<br/>2347.TW</td>
+<td>264764777.0</td>
+<td class="text-success">0.2</td>
+<td>74.5</td>
+<td>75.6</td>
+<td>75.6</td>
+<td>73.9</td>
+<td>3527229.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>海悅<br/>2348.TW</td>
+<td>676540398.0</td>
+<td class="text-success">13.5</td>
+<td>164.0</td>
+<td>180.0</td>
+<td>182.5</td>
+<td>163.5</td>
+<td>3840714.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>錸德<br/>2349.TW</td>
+<td>122660957.0</td>
+<td class="text-danger">0.0</td>
+<td>15.0</td>
+<td>15.1</td>
+<td>15.4</td>
+<td>15.0</td>
+<td>8086875.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>順德<br/>2351.TW</td>
+<td>155200402.0</td>
+<td class="text-danger">0.0</td>
+<td>101.0</td>
+<td>102.0</td>
+<td>102.5</td>
+<td>100.0</td>
+<td>1530869.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>佳世達<br/>2352.TW</td>
+<td>46410847.0</td>
+<td class="text-success">0.1</td>
+<td>36.75</td>
+<td>36.95</td>
+<td>36.95</td>
+<td>36.25</td>
+<td>1264374.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>宏碁<br/>2353.TW</td>
+<td>334705062.0</td>
+<td class="text-success">0.1</td>
+<td>37.5</td>
+<td>37.85</td>
+<td>38.15</td>
+<td>37.3</td>
+<td>8856944.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>鴻準<br/>2354.TW</td>
+<td>4339863397.0</td>
+<td class="text-success">2.4</td>
+<td>78.3</td>
+<td>80.4</td>
+<td>81.7</td>
+<td>76.8</td>
+<td>54339628.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>敬鵬<br/>2355.TW</td>
+<td>18263766.0</td>
+<td class="text-success">0.05</td>
+<td>37.9</td>
+<td>38.25</td>
+<td>38.35</td>
+<td>37.7</td>
+<td>478792.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>英業達<br/>2356.TW</td>
+<td>831424202.0</td>
+<td class="text-success">0.8</td>
+<td>47.85</td>
+<td>49.0</td>
+<td>49.4</td>
+<td>47.8</td>
+<td>17102482.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>華碩<br/>2357.TW</td>
+<td>2561007366.0</td>
+<td class="text-success">7.0</td>
+<td>579.0</td>
+<td>588.0</td>
+<td>597.0</td>
+<td>574.0</td>
+<td>4370258.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>所羅門<br/>2359.TW</td>
+<td>493724768.0</td>
+<td class="text-success">10.0</td>
+<td>132.5</td>
+<td>142.0</td>
+<td>142.0</td>
+<td>131.5</td>
+<td>3595404.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>致茂<br/>2360.TW</td>
+<td>726663534.0</td>
+<td class="text-success">3.5</td>
+<td>403.0</td>
+<td>412.5</td>
+<td>414.5</td>
+<td>403.0</td>
+<td>1768160.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>藍天<br/>2362.TW</td>
+<td>62357464.0</td>
+<td class="text-success">1.3</td>
+<td>55.2</td>
+<td>56.5</td>
+<td>56.8</td>
+<td>54.4</td>
+<td>1119027.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>矽統<br/>2363.TW</td>
+<td>230610830.0</td>
+<td class="text-success">0.8</td>
+<td>68.2</td>
+<td>69.0</td>
+<td>69.3</td>
+<td>67.5</td>
+<td>3360077.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>昆盈<br/>2365.TW</td>
+<td>106629212.0</td>
+<td class="text-success">0.6</td>
+<td>42.85</td>
+<td>43.4</td>
+<td>43.4</td>
+<td>42.25</td>
+<td>2493525.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>燿華<br/>2367.TW</td>
+<td>145170130.0</td>
+<td class="text-success">0.45</td>
+<td>30.65</td>
+<td>31.3</td>
+<td>31.45</td>
+<td>30.35</td>
+<td>4682916.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>金像電<br/>2368.TW</td>
+<td>455176983.0</td>
+<td class="text-success">2.0</td>
+<td>182.0</td>
+<td>185.5</td>
+<td>187.0</td>
+<td>180.5</td>
+<td>2463540.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>菱生<br/>2369.TW</td>
+<td>12050288.0</td>
+<td class="text-success">0.35</td>
+<td>17.6</td>
+<td>18.05</td>
+<td>18.1</td>
+<td>17.5</td>
+<td>672128.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>大同<br/>2371.TW</td>
+<td>467940325.0</td>
+<td class="text-success">0.85</td>
+<td>46.05</td>
+<td>47.35</td>
+<td>47.65</td>
+<td>45.7</td>
+<td>9973615.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>震旦行<br/>2373.TW</td>
+<td>1426810.0</td>
+<td class="text-danger">0.0</td>
+<td>67.0</td>
+<td>67.0</td>
+<td>67.0</td>
+<td>66.6</td>
+<td>21334.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>佳能<br/>2374.TW</td>
+<td>85647802.0</td>
+<td class="text-success">1.05</td>
+<td>45.3</td>
+<td>46.3</td>
+<td>46.4</td>
+<td>45.3</td>
+<td>1860794.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>凱美<br/>2375.TW</td>
+<td>195395761.0</td>
+<td class="text-success">4.9</td>
+<td>63.2</td>
+<td>68.3</td>
+<td>69.2</td>
+<td>62.6</td>
+<td>2905101.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>技嘉<br/>2376.TW</td>
+<td>1242233248.0</td>
+<td class="text-success">1.5</td>
+<td>269.0</td>
+<td>271.5</td>
+<td>273.5</td>
+<td>268.0</td>
+<td>4585781.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>微星<br/>2377.TW</td>
+<td>422699070.0</td>
+<td class="text-success">3.0</td>
+<td>167.5</td>
+<td>171.0</td>
+<td>172.0</td>
+<td>166.0</td>
+<td>2485596.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>瑞昱<br/>2379.TW</td>
+<td>1002142801.0</td>
+<td class="text-success">4.5</td>
+<td>472.0</td>
+<td>476.0</td>
+<td>480.5</td>
+<td>468.0</td>
+<td>2105815.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>廣達<br/>2382.TW</td>
+<td>4260881573.0</td>
+<td class="text-success">3.0</td>
+<td>286.0</td>
+<td>291.0</td>
+<td>293.5</td>
+<td>285.0</td>
+<td>14671668.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>台光電<br/>2383.TW</td>
+<td>1699947033.0</td>
+<td class="text-success">5.5</td>
+<td>459.0</td>
+<td>468.5</td>
+<td>471.5</td>
+<td>456.5</td>
+<td>3650074.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>群光<br/>2385.TW</td>
+<td>453314282.0</td>
+<td class="text-success">2.0</td>
+<td>154.0</td>
+<td>157.0</td>
+<td>159.5</td>
+<td>152.5</td>
+<td>2880729.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>精元<br/>2387.TW</td>
+<td>30349197.0</td>
+<td class="text-danger">0.0</td>
+<td>63.4</td>
+<td>63.4</td>
+<td>63.4</td>
+<td>62.9</td>
+<td>480128.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>威盛<br/>2388.TW</td>
+<td>377529183.0</td>
+<td class="text-success">1.0</td>
+<td>102.0</td>
+<td>103.0</td>
+<td>104.0</td>
+<td>101.0</td>
+<td>3678835.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>正崴<br/>2392.TW</td>
+<td>3097518448.0</td>
+<td class="text-success">1.6</td>
+<td>78.0</td>
+<td>79.6</td>
+<td>80.4</td>
+<td>77.0</td>
+<td>39337646.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>億光<br/>2393.TW</td>
+<td>123299473.0</td>
+<td class="text-success">1.6</td>
+<td>75.8</td>
+<td>77.7</td>
+<td>78.0</td>
+<td>75.5</td>
+<td>1598182.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>研華<br/>2395.TW</td>
+<td>371595398.0</td>
+<td class="text-danger">-7.0</td>
+<td>337.5</td>
+<td>335.5</td>
+<td>342.0</td>
+<td>333.5</td>
+<td>1103455.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>友通<br/>2397.TW</td>
+<td>6580127.0</td>
+<td class="text-success">0.4</td>
+<td>73.7</td>
+<td>74.4</td>
+<td>74.8</td>
+<td>73.0</td>
+<td>88885.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>凌陽<br/>2401.TW</td>
+<td>24347710.0</td>
+<td class="text-danger">0.0</td>
+<td>27.7</td>
+<td>28.0</td>
+<td>28.15</td>
+<td>27.4</td>
+<td>874950.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>毅嘉<br/>2402.TW</td>
+<td>86710214.0</td>
+<td class="text-success">0.8</td>
+<td>40.6</td>
+<td>41.4</td>
+<td>41.55</td>
+<td>40.3</td>
+<td>2111733.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>漢唐<br/>2404.TW</td>
+<td>1920666638.0</td>
+<td class="text-success">15.5</td>
+<td>410.0</td>
+<td>428.5</td>
+<td>437.0</td>
+<td>408.0</td>
+<td>4481749.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>輔信<br/>2405.TW</td>
+<td>30387123.0</td>
+<td class="text-success">0.15</td>
+<td>19.95</td>
+<td>20.05</td>
+<td>20.2</td>
+<td>19.8</td>
+<td>1519467.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>國碩<br/>2406.TW</td>
+<td>10766614.0</td>
+<td class="text-danger">-0.1</td>
+<td>16.9</td>
+<td>16.8</td>
+<td>17.0</td>
+<td>16.8</td>
+<td>638930.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>南亞科<br/>2408.TW</td>
+<td>785173212.0</td>
+<td class="text-danger">-0.3</td>
+<td>33.55</td>
+<td>33.45</td>
+<td>33.65</td>
+<td>32.95</td>
+<td>23639962.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>友達<br/>2409.TW</td>
+<td>245380303.0</td>
+<td class="text-success">0.15</td>
+<td>15.45</td>
+<td>15.6</td>
+<td>15.75</td>
+<td>15.35</td>
+<td>15760278.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>中華電<br/>2412.TW</td>
+<td>779249858.0</td>
+<td class="text-danger">-0.5</td>
+<td>123.0</td>
+<td>123.0</td>
+<td>124.0</td>
+<td>123.0</td>
+<td>6329007.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>精技<br/>2414.TW</td>
+<td>3598169.0</td>
+<td class="text-danger">-0.3</td>
+<td>37.95</td>
+<td>37.9</td>
+<td>38.25</td>
+<td>37.7</td>
+<td>94738.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>圓剛<br/>2417.TW</td>
+<td>20693046.0</td>
+<td class="text-success">0.3</td>
+<td>40.1</td>
+<td>41.1</td>
+<td>41.1</td>
+<td>39.7</td>
+<td>510456.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>仲琦<br/>2419.TW</td>
+<td>138962465.0</td>
+<td class="text-danger">-0.55</td>
+<td>35.6</td>
+<td>35.15</td>
+<td>36.25</td>
+<td>35.0</td>
+<td>3899540.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>新巨<br/>2420.TW</td>
+<td>10317416.0</td>
+<td class="text-success">0.1</td>
+<td>65.3</td>
+<td>66.1</td>
+<td>66.4</td>
+<td>65.3</td>
+<td>156267.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>建準<br/>2421.TW</td>
+<td>169828861.0</td>
+<td class="text-danger">-0.2</td>
+<td>99.6</td>
+<td>99.8</td>
+<td>100.5</td>
+<td>98.0</td>
+<td>1704441.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>興勤<br/>2428.TW</td>
+<td>9767103.0</td>
+<td class="text-danger">-0.5</td>
+<td>153.5</td>
+<td>154.5</td>
+<td>155.0</td>
+<td>153.5</td>
+<td>63075.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>互盛電<br/>2433.TW</td>
+<td>565043.0</td>
+<td class="text-danger">0.0</td>
+<td>50.2</td>
+<td>50.4</td>
+<td>50.4</td>
+<td>50.1</td>
+<td>11255.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>偉詮電<br/>2436.TW</td>
+<td>32258658.0</td>
+<td class="text-danger">0.0</td>
+<td>50.8</td>
+<td>51.1</td>
+<td>51.7</td>
+<td>50.4</td>
+<td>631238.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>美律<br/>2439.TW</td>
+<td>103744777.0</td>
+<td class="text-success">1.0</td>
+<td>104.0</td>
+<td>106.0</td>
+<td>106.5</td>
+<td>103.5</td>
+<td>982650.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>超豐<br/>2441.TW</td>
+<td>26969981.0</td>
+<td class="text-danger">-0.2</td>
+<td>56.2</td>
+<td>56.7</td>
+<td>57.1</td>
+<td>56.1</td>
+<td>475207.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>新美齊<br/>2442.TW</td>
+<td>32548794.0</td>
+<td class="text-success">0.25</td>
+<td>25.3</td>
+<td>25.65</td>
+<td>25.7</td>
+<td>25.2</td>
+<td>1281293.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>京元電子<br/>2449.TW</td>
+<td>1028525746.0</td>
+<td class="text-success">3.0</td>
+<td>122.0</td>
+<td>126.5</td>
+<td>127.0</td>
+<td>121.5</td>
+<td>8229156.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>神腦<br/>2450.TW</td>
+<td>919973.0</td>
+<td class="text-success">0.1</td>
+<td>34.5</td>
+<td>34.85</td>
+<td>34.95</td>
+<td>34.5</td>
+<td>26486.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>創見<br/>2451.TW</td>
+<td>118534636.0</td>
+<td class="text-danger">-0.6</td>
+<td>91.0</td>
+<td>91.5</td>
+<td>91.5</td>
+<td>89.8</td>
+<td>1306782.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>凌群<br/>2453.TW</td>
+<td>15272481.0</td>
+<td class="text-success">0.1</td>
+<td>51.3</td>
+<td>51.7</td>
+<td>52.0</td>
+<td>51.0</td>
+<td>296977.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>聯發科<br/>2454.TW</td>
+<td>5418649990.0</td>
+<td class="text-danger">0.0</td>
+<td>1235.0</td>
+<td>1255.0</td>
+<td>1270.0</td>
+<td>1225.0</td>
+<td>4324490.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>全新<br/>2455.TW</td>
+<td>1287281560.0</td>
+<td class="text-success">7.5</td>
+<td>160.0</td>
+<td>170.0</td>
+<td>170.0</td>
+<td>159.0</td>
+<td>7720778.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>飛宏<br/>2457.TW</td>
+<td>36535892.0</td>
+<td class="text-success">0.2</td>
+<td>40.3</td>
+<td>41.1</td>
+<td>41.45</td>
+<td>40.3</td>
+<td>891540.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>義隆<br/>2458.TW</td>
+<td>306917970.0</td>
+<td class="text-success">5.0</td>
+<td>141.5</td>
+<td>146.5</td>
+<td>149.0</td>
+<td>141.0</td>
+<td>2106301.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>敦吉<br/>2459.TW</td>
+<td>918898.0</td>
+<td class="text-danger">0.0</td>
+<td>70.0</td>
+<td>70.3</td>
+<td>70.7</td>
+<td>70.0</td>
+<td>13071.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>盟立<br/>2464.TW</td>
+<td>202575378.0</td>
+<td class="text-success">2.1</td>
+<td>73.5</td>
+<td>75.8</td>
+<td>76.0</td>
+<td>72.7</td>
+<td>2728573.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>麗臺<br/>2465.TW</td>
+<td>16878079.0</td>
+<td class="text-success">0.6</td>
+<td>70.8</td>
+<td>70.3</td>
+<td>71.8</td>
+<td>69.5</td>
+<td>239274.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>冠西電<br/>2466.TW</td>
+<td>136334.0</td>
+<td class="text-danger">-0.5</td>
+<td>34.1</td>
+<td>33.9</td>
+<td>34.45</td>
+<td>33.85</td>
+<td>4001.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>志聖<br/>2467.TW</td>
+<td>260782434.0</td>
+<td class="text-danger">0.0</td>
+<td>199.0</td>
+<td>199.0</td>
+<td>201.0</td>
+<td>193.5</td>
+<td>1320904.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>立隆電<br/>2472.TW</td>
+<td>118063568.0</td>
+<td class="text-success">2.7</td>
+<td>75.6</td>
+<td>78.6</td>
+<td>79.2</td>
+<td>75.3</td>
+<td>1512686.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>可成<br/>2474.TW</td>
+<td>1020620404.0</td>
+<td class="text-success">0.5</td>
+<td>196.5</td>
+<td>196.5</td>
+<td>200.0</td>
+<td>195.0</td>
+<td>5168432.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>鉅祥<br/>2476.TW</td>
+<td>135646876.0</td>
+<td class="text-success">2.7</td>
+<td>83.7</td>
+<td>86.5</td>
+<td>86.6</td>
+<td>82.9</td>
+<td>1589016.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>大毅<br/>2478.TW</td>
+<td>2864549.0</td>
+<td class="text-success">0.45</td>
+<td>46.1</td>
+<td>46.8</td>
+<td>46.85</td>
+<td>46.0</td>
+<td>61520.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>敦陽科<br/>2480.TW</td>
+<td>4943935.0</td>
+<td class="text-success">1.0</td>
+<td>125.0</td>
+<td>127.0</td>
+<td>127.0</td>
+<td>124.5</td>
+<td>39330.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>強茂<br/>2481.TW</td>
+<td>32520478.0</td>
+<td class="text-danger">-0.4</td>
+<td>50.9</td>
+<td>51.0</td>
+<td>51.5</td>
+<td>50.5</td>
+<td>636911.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>兆赫<br/>2485.TW</td>
+<td>5291221.0</td>
+<td class="text-danger">-0.1</td>
+<td>16.85</td>
+<td>16.9</td>
+<td>17.0</td>
+<td>16.7</td>
+<td>313894.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>一詮<br/>2486.TW</td>
+<td>741446844.0</td>
+<td class="text-danger">-0.5</td>
+<td>109.5</td>
+<td>109.5</td>
+<td>111.0</td>
+<td>108.0</td>
+<td>6780697.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>瑞軒<br/>2489.TW</td>
+<td>59545612.0</td>
+<td class="text-success">0.1</td>
+<td>19.35</td>
+<td>19.55</td>
+<td>19.65</td>
+<td>19.2</td>
+<td>3065419.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>華新科<br/>2492.TW</td>
+<td>76389772.0</td>
+<td class="text-success">1.3</td>
+<td>92.6</td>
+<td>94.2</td>
+<td>94.4</td>
+<td>91.5</td>
+<td>819468.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>揚博<br/>2493.TW</td>
+<td>50066400.0</td>
+<td class="text-danger">0.0</td>
+<td>104.0</td>
+<td>104.5</td>
+<td>106.0</td>
+<td>103.5</td>
+<td>477605.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>普安<br/>2495.TW</td>
+<td>142063665.0</td>
+<td class="text-success">0.3</td>
+<td>36.5</td>
+<td>36.8</td>
+<td>37.3</td>
+<td>36.2</td>
+<td>3864131.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>怡利電<br/>2497.TW</td>
+<td>23786145.0</td>
+<td class="text-success">0.2</td>
+<td>64.0</td>
+<td>64.5</td>
+<td>64.8</td>
+<td>63.7</td>
+<td>369630.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>宏達電<br/>2498.TW</td>
+<td>178403190.0</td>
+<td class="text-success">0.55</td>
+<td>44.4</td>
+<td>45.1</td>
+<td>45.15</td>
+<td>44.35</td>
+<td>3979338.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>國建<br/>2501.TW</td>
+<td>25279886.0</td>
+<td class="text-danger">-0.05</td>
+<td>25.5</td>
+<td>25.55</td>
+<td>25.65</td>
+<td>25.1</td>
+<td>994984.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>國產<br/>2504.TW</td>
+<td>222066039.0</td>
+<td class="text-danger">-1.0</td>
+<td>54.5</td>
+<td>54.0</td>
+<td>55.0</td>
+<td>53.8</td>
+<td>4087864.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>國揚<br/>2505.TW</td>
+<td>2554932.0</td>
+<td class="text-success">0.25</td>
+<td>22.1</td>
+<td>22.65</td>
+<td>22.9</td>
+<td>22.05</td>
+<td>113372.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>太子<br/>2511.TW</td>
+<td>5224864.0</td>
+<td class="text-success">0.05</td>
+<td>10.65</td>
+<td>10.8</td>
+<td>10.85</td>
+<td>10.6</td>
+<td>486379.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>龍邦<br/>2514.TW</td>
+<td>3778439.0</td>
+<td class="text-success">0.15</td>
+<td>20.55</td>
+<td>20.75</td>
+<td>20.8</td>
+<td>20.45</td>
+<td>183103.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>中工<br/>2515.TW</td>
+<td>30414174.0</td>
+<td class="text-success">0.15</td>
+<td>11.1</td>
+<td>11.25</td>
+<td>11.25</td>
+<td>10.95</td>
+<td>2736496.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>冠德<br/>2520.TW</td>
+<td>274777134.0</td>
+<td class="text-success">1.4</td>
+<td>57.7</td>
+<td>59.2</td>
+<td>59.2</td>
+<td>57.5</td>
+<td>4696753.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>京城<br/>2524.TW</td>
+<td>53297719.0</td>
+<td class="text-success">1.3</td>
+<td>75.4</td>
+<td>77.3</td>
+<td>78.4</td>
+<td>75.0</td>
+<td>692706.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>宏璟<br/>2527.TW</td>
+<td>9920197.0</td>
+<td class="text-success">0.05</td>
+<td>38.2</td>
+<td>37.85</td>
+<td>38.2</td>
+<td>37.45</td>
+<td>262055.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>皇普<br/>2528.TW</td>
+<td>71480921.0</td>
+<td class="text-success">2.95</td>
+<td>39.5</td>
+<td>42.5</td>
+<td>42.7</td>
+<td>39.35</td>
+<td>1732651.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>華建<br/>2530.TW</td>
+<td>11926322.0</td>
+<td class="text-success">0.2</td>
+<td>40.65</td>
+<td>41.25</td>
+<td>41.6</td>
+<td>40.3</td>
+<td>289747.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>宏盛<br/>2534.TW</td>
+<td>16516482.0</td>
+<td class="text-success">0.25</td>
+<td>26.5</td>
+<td>26.95</td>
+<td>27.0</td>
+<td>26.15</td>
+<td>617481.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>達欣工<br/>2535.TW</td>
+<td>7736107.0</td>
+<td class="text-success">0.2</td>
+<td>50.1</td>
+<td>50.3</td>
+<td>50.3</td>
+<td>49.65</td>
+<td>154824.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>宏普<br/>2536.TW</td>
+<td>2456210.0</td>
+<td class="text-danger">0.0</td>
+<td>30.6</td>
+<td>30.9</td>
+<td>31.25</td>
+<td>30.45</td>
+<td>79581.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>聯上發<br/>2537.TW</td>
+<td>7554000.0</td>
+<td class="text-success">0.15</td>
+<td>14.1</td>
+<td>14.3</td>
+<td>14.35</td>
+<td>13.95</td>
+<td>532899.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>基泰<br/>2538.TW</td>
+<td>4452634.0</td>
+<td class="text-success">0.1</td>
+<td>16.0</td>
+<td>16.15</td>
+<td>16.2</td>
+<td>16.0</td>
+<td>276470.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>櫻花建<br/>2539.TW</td>
+<td>35808242.0</td>
+<td class="text-success">0.6</td>
+<td>53.4</td>
+<td>53.6</td>
+<td>54.0</td>
+<td>52.4</td>
+<td>671005.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>愛山林<br/>2540.TW</td>
+<td>223789821.0</td>
+<td class="text-success">2.2</td>
+<td>88.6</td>
+<td>91.4</td>
+<td>91.9</td>
+<td>88.1</td>
+<td>2478545.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>興富發<br/>2542.TW</td>
+<td>726158969.0</td>
+<td class="text-success">1.6</td>
+<td>46.25</td>
+<td>47.95</td>
+<td>48.0</td>
+<td>45.6</td>
+<td>15373241.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>皇昌<br/>2543.TW</td>
+<td>288797286.0</td>
+<td class="text-danger">0.0</td>
+<td>74.4</td>
+<td>74.1</td>
+<td>76.4</td>
+<td>73.6</td>
+<td>3859018.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>皇翔<br/>2545.TW</td>
+<td>116701814.0</td>
+<td class="text-success">2.8</td>
+<td>71.9</td>
+<td>75.9</td>
+<td>76.3</td>
+<td>71.0</td>
+<td>1577560.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>根基<br/>2546.TW</td>
+<td>5459736.0</td>
+<td class="text-success">1.2</td>
+<td>74.2</td>
+<td>75.3</td>
+<td>75.5</td>
+<td>74.2</td>
+<td>72752.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>日勝生<br/>2547.TW</td>
+<td>23768610.0</td>
+<td class="text-danger">-0.1</td>
+<td>10.65</td>
+<td>10.6</td>
+<td>10.8</td>
+<td>10.55</td>
+<td>2234291.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>華固<br/>2548.TW</td>
+<td>61746630.0</td>
+<td class="text-success">1.5</td>
+<td>120.5</td>
+<td>122.0</td>
+<td>123.0</td>
+<td>119.5</td>
+<td>506593.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>潤弘<br/>2597.TW</td>
+<td>17276916.0</td>
+<td class="text-danger">-0.5</td>
+<td>141.0</td>
+<td>143.0</td>
+<td>144.0</td>
+<td>140.5</td>
+<td>121505.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>益航<br/>2601.TW</td>
+<td>10591572.0</td>
+<td class="text-success">0.02</td>
+<td>7.66</td>
+<td>7.69</td>
+<td>7.72</td>
+<td>7.61</td>
+<td>1382105.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>長榮<br/>2603.TW</td>
+<td>5134921190.0</td>
+<td class="text-danger">0.0</td>
+<td>220.0</td>
+<td>217.0</td>
+<td>222.0</td>
+<td>216.0</td>
+<td>23520257.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>新興<br/>2605.TW</td>
+<td>119762268.0</td>
+<td class="text-success">0.15</td>
+<td>26.25</td>
+<td>26.35</td>
+<td>26.7</td>
+<td>26.25</td>
+<td>4538539.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>裕民<br/>2606.TW</td>
+<td>191445760.0</td>
+<td class="text-success">0.6</td>
+<td>59.0</td>
+<td>59.6</td>
+<td>59.7</td>
+<td>59.0</td>
+<td>3224298.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>榮運<br/>2607.TW</td>
+<td>22188373.0</td>
+<td class="text-success">0.25</td>
+<td>30.6</td>
+<td>31.0</td>
+<td>31.0</td>
+<td>30.5</td>
+<td>720734.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>嘉里大榮<br/>2608.TW</td>
+<td>4801337.0</td>
+<td class="text-danger">0.0</td>
+<td>39.4</td>
+<td>39.6</td>
+<td>39.6</td>
+<td>39.2</td>
+<td>121867.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>陽明<br/>2609.TW</td>
+<td>4452881942.0</td>
+<td class="text-success">0.7</td>
+<td>73.8</td>
+<td>73.2</td>
+<td>74.6</td>
+<td>72.5</td>
+<td>60659875.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>華航<br/>2610.TW</td>
+<td>848234315.0</td>
+<td class="text-success">0.25</td>
+<td>24.45</td>
+<td>24.9</td>
+<td>24.95</td>
+<td>24.4</td>
+<td>34269325.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>中航<br/>2612.TW</td>
+<td>9018281.0</td>
+<td class="text-danger">-0.15</td>
+<td>42.75</td>
+<td>43.0</td>
+<td>43.3</td>
+<td>42.75</td>
+<td>209716.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>萬海<br/>2615.TW</td>
+<td>2140661245.0</td>
+<td class="text-danger">-0.8</td>
+<td>84.5</td>
+<td>83.0</td>
+<td>85.3</td>
+<td>83.0</td>
+<td>25525452.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>台航<br/>2617.TW</td>
+<td>14138855.0</td>
+<td class="text-success">0.05</td>
+<td>30.95</td>
+<td>31.05</td>
+<td>31.15</td>
+<td>30.8</td>
+<td>456437.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>長榮航<br/>2618.TW</td>
+<td>1349970675.0</td>
+<td class="text-danger">-0.3</td>
+<td>41.35</td>
+<td>41.55</td>
+<td>41.75</td>
+<td>41.0</td>
+<td>32600693.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>亞航<br/>2630.TW</td>
+<td>14402899.0</td>
+<td class="text-danger">0.0</td>
+<td>30.3</td>
+<td>30.3</td>
+<td>31.0</td>
+<td>30.1</td>
+<td>473869.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>台灣高鐵<br/>2633.TW</td>
+<td>96285262.0</td>
+<td class="text-danger">-0.25</td>
+<td>28.45</td>
+<td>28.25</td>
+<td>28.45</td>
+<td>28.25</td>
+<td>3402277.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>漢翔<br/>2634.TW</td>
+<td>104376340.0</td>
+<td class="text-danger">-0.25</td>
+<td>43.1</td>
+<td>43.05</td>
+<td>43.25</td>
+<td>42.5</td>
+<td>2430875.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>台驊控股<br/>2636.TW</td>
+<td>42857496.0</td>
+<td class="text-danger">-0.6</td>
+<td>79.3</td>
+<td>78.7</td>
+<td>79.5</td>
+<td>78.6</td>
+<td>543064.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>慧洋-KY<br/>2637.TW</td>
+<td>255506833.0</td>
+<td class="text-danger">-0.6</td>
+<td>74.7</td>
+<td>74.5</td>
+<td>75.8</td>
+<td>74.2</td>
+<td>3419349.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>長榮航太<br/>2645.TW</td>
+<td>27537688.0</td>
+<td class="text-success">0.5</td>
+<td>92.8</td>
+<td>93.8</td>
+<td>93.8</td>
+<td>92.4</td>
+<td>295531.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>國賓<br/>2704.TW</td>
+<td>7758480.0</td>
+<td class="text-danger">-0.6</td>
+<td>56.5</td>
+<td>56.5</td>
+<td>56.7</td>
+<td>56.1</td>
+<td>137706.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>第一店<br/>2706.TW</td>
+<td>3193826.0</td>
+<td class="text-success">0.05</td>
+<td>14.75</td>
+<td>14.8</td>
+<td>14.8</td>
+<td>14.75</td>
+<td>216447.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>晶華<br/>2707.TW</td>
+<td>39025613.0</td>
+<td class="text-success">1.5</td>
+<td>190.0</td>
+<td>193.0</td>
+<td>193.5</td>
+<td>189.0</td>
+<td>203350.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>夏都<br/>2722.TW</td>
+<td>13453931.0</td>
+<td class="text-success">0.3</td>
+<td>31.85</td>
+<td>32.5</td>
+<td>32.5</td>
+<td>30.5</td>
+<td>424341.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>美食-KY<br/>2723.TW</td>
+<td>26047804.0</td>
+<td class="text-success">2.0</td>
+<td>92.8</td>
+<td>95.7</td>
+<td>95.8</td>
+<td>92.8</td>
+<td>274282.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>王品<br/>2727.TW</td>
+<td>87482633.0</td>
+<td class="text-success">1.0</td>
+<td>228.5</td>
+<td>231.0</td>
+<td>232.5</td>
+<td>227.5</td>
+<td>379307.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>雄獅<br/>2731.TW</td>
+<td>21221102.0</td>
+<td class="text-success">0.5</td>
+<td>121.0</td>
+<td>121.5</td>
+<td>122.5</td>
+<td>120.5</td>
+<td>174802.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>寒舍<br/>2739.TW</td>
+<td>6549869.0</td>
+<td class="text-success">0.3</td>
+<td>49.6</td>
+<td>50.4</td>
+<td>50.5</td>
+<td>49.55</td>
+<td>130339.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>雲品<br/>2748.TW</td>
+<td>18621301.0</td>
+<td class="text-success">1.3</td>
+<td>60.4</td>
+<td>61.7</td>
+<td>62.0</td>
+<td>59.8</td>
+<td>304501.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>八方雲集<br/>2753.TW</td>
+<td>7300056.0</td>
+<td class="text-success">2.0</td>
+<td>146.0</td>
+<td>147.5</td>
+<td>147.5</td>
+<td>145.0</td>
+<td>49686.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>世界健身-KY<br/>2762.TW</td>
+<td>4121755.0</td>
+<td class="text-success">0.2</td>
+<td>94.9</td>
+<td>95.4</td>
+<td>95.4</td>
+<td>94.1</td>
+<td>43471.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>彰銀<br/>2801.TW</td>
+<td>262299124.0</td>
+<td class="text-danger">-0.05</td>
+<td>17.6</td>
+<td>17.6</td>
+<td>17.7</td>
+<td>17.55</td>
+<td>14885262.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>京城銀<br/>2809.TW</td>
+<td>231222300.0</td>
+<td class="text-danger">-0.35</td>
+<td>48.35</td>
+<td>48.4</td>
+<td>48.5</td>
+<td>47.7</td>
+<td>4801765.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>台中銀<br/>2812.TW</td>
+<td>74977214.0</td>
+<td class="text-success">0.05</td>
+<td>18.55</td>
+<td>18.75</td>
+<td>18.8</td>
+<td>18.4</td>
+<td>4023488.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>旺旺保<br/>2816.TW</td>
+<td>2127918.0</td>
+<td class="text-success">0.1</td>
+<td>31.5</td>
+<td>31.9</td>
+<td>31.9</td>
+<td>31.4</td>
+<td>67073.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>華票<br/>2820.TW</td>
+<td>5840794.0</td>
+<td class="text-danger">-0.05</td>
+<td>15.0</td>
+<td>15.0</td>
+<td>15.05</td>
+<td>15.0</td>
+<td>389158.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>台產<br/>2832.TW</td>
+<td>5036036.0</td>
+<td class="text-success">0.1</td>
+<td>28.6</td>
+<td>28.7</td>
+<td>28.7</td>
+<td>28.5</td>
+<td>175921.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>臺企銀<br/>2834.TW</td>
+<td>216252681.0</td>
+<td class="text-danger">-0.15</td>
+<td>14.9</td>
+<td>14.8</td>
+<td>14.95</td>
+<td>14.8</td>
+<td>14559628.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>高雄銀<br/>2836.TW</td>
+<td>10772841.0</td>
+<td class="text-danger">-0.1</td>
+<td>11.65</td>
+<td>11.6</td>
+<td>11.7</td>
+<td>11.6</td>
+<td>926457.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>聯邦銀<br/>2838.TW</td>
+<td>15762099.0</td>
+<td class="text-danger">-0.15</td>
+<td>15.35</td>
+<td>15.35</td>
+<td>15.5</td>
+<td>15.25</td>
+<td>1026823.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>聯邦銀甲特<br/>2838A.TW</td>
+<td>587218.0</td>
+<td class="text-danger">0.0</td>
+<td>53.0</td>
+<td>53.1</td>
+<td>53.1</td>
+<td>53.0</td>
+<td>11078.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>遠東銀<br/>2845.TW</td>
+<td>44798689.0</td>
+<td class="text-success">0.1</td>
+<td>13.55</td>
+<td>13.55</td>
+<td>13.55</td>
+<td>13.4</td>
+<td>3326003.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>安泰銀<br/>2849.TW</td>
+<td>885918.0</td>
+<td class="text-danger">-0.1</td>
+<td>14.6</td>
+<td>14.7</td>
+<td>14.7</td>
+<td>14.5</td>
+<td>60714.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>新產<br/>2850.TW</td>
+<td>21887149.0</td>
+<td class="text-success">0.8</td>
+<td>98.7</td>
+<td>100.0</td>
+<td>100.0</td>
+<td>98.3</td>
+<td>219912.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>中再保<br/>2851.TW</td>
+<td>23966956.0</td>
+<td class="text-success">0.05</td>
+<td>25.6</td>
+<td>25.8</td>
+<td>25.95</td>
+<td>25.5</td>
+<td>933235.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>第一保<br/>2852.TW</td>
+<td>7105973.0</td>
+<td class="text-success">0.3</td>
+<td>24.4</td>
+<td>24.85</td>
+<td>24.85</td>
+<td>24.4</td>
+<td>288010.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>統一證<br/>2855.TW</td>
+<td>46472698.0</td>
+<td class="text-success">0.1</td>
+<td>26.2</td>
+<td>26.45</td>
+<td>26.55</td>
+<td>25.95</td>
+<td>1767842.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>三商壽<br/>2867.TW</td>
+<td>31650690.0</td>
+<td class="text-danger">0.0</td>
+<td>6.58</td>
+<td>6.6</td>
+<td>6.6</td>
+<td>6.54</td>
+<td>4813657.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>華南金<br/>2880.TW</td>
+<td>572804027.0</td>
+<td class="text-danger">-0.1</td>
+<td>25.9</td>
+<td>26.05</td>
+<td>26.2</td>
+<td>25.8</td>
+<td>22022087.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>富邦金<br/>2881.TW</td>
+<td>1792820239.0</td>
+<td class="text-danger">-0.9</td>
+<td>88.0</td>
+<td>88.0</td>
+<td>88.5</td>
+<td>87.3</td>
+<td>20368101.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>富邦特<br/>2881A.TW</td>
+<td>2328422.0</td>
+<td class="text-danger">0.0</td>
+<td>62.7</td>
+<td>62.8</td>
+<td>62.8</td>
+<td>62.7</td>
+<td>37080.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>富邦金乙特<br/>2881B.TW</td>
+<td>4226164.0</td>
+<td class="text-danger">0.0</td>
+<td>59.8</td>
+<td>60.0</td>
+<td>60.0</td>
+<td>59.7</td>
+<td>70708.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>富邦金丙特<br/>2881C.TW</td>
+<td>1548974.0</td>
+<td class="text-danger">0.0</td>
+<td>52.7</td>
+<td>52.7</td>
+<td>52.8</td>
+<td>52.6</td>
+<td>29388.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>國泰金<br/>2882.TW</td>
+<td>1527088861.0</td>
+<td class="text-danger">-0.6</td>
+<td>65.8</td>
+<td>65.7</td>
+<td>66.1</td>
+<td>65.0</td>
+<td>23283661.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>國泰特<br/>2882A.TW</td>
+<td>523107.0</td>
+<td class="text-danger">-0.1</td>
+<td>61.1</td>
+<td>61.1</td>
+<td>61.1</td>
+<td>61.1</td>
+<td>8565.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>國泰金乙特<br/>2882B.TW</td>
+<td>2372098.0</td>
+<td class="text-success">0.1</td>
+<td>59.1</td>
+<td>60.0</td>
+<td>60.0</td>
+<td>59.1</td>
+<td>39668.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>凱基金<br/>2883.TW</td>
+<td>757803724.0</td>
+<td class="text-danger">0.0</td>
+<td>17.1</td>
+<td>17.2</td>
+<td>17.25</td>
+<td>16.85</td>
+<td>44273887.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>凱基金乙特<br/>2883B.TW</td>
+<td>28658754.0</td>
+<td class="text-danger">-0.01</td>
+<td>7.78</td>
+<td>7.78</td>
+<td>7.79</td>
+<td>7.77</td>
+<td>3684282.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>玉山金<br/>2884.TW</td>
+<td>676343784.0</td>
+<td class="text-danger">-0.3</td>
+<td>27.1</td>
+<td>27.0</td>
+<td>27.2</td>
+<td>26.9</td>
+<td>25014595.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>元大金<br/>2885.TW</td>
+<td>608925066.0</td>
+<td class="text-danger">0.0</td>
+<td>33.1</td>
+<td>33.25</td>
+<td>33.3</td>
+<td>32.7</td>
+<td>18378976.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>兆豐金<br/>2886.TW</td>
+<td>879033761.0</td>
+<td class="text-danger">-0.1</td>
+<td>39.6</td>
+<td>39.75</td>
+<td>40.0</td>
+<td>39.45</td>
+<td>22112139.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>台新金<br/>2887.TW</td>
+<td>479448494.0</td>
+<td class="text-danger">-0.2</td>
+<td>17.2</td>
+<td>17.1</td>
+<td>17.3</td>
+<td>17.1</td>
+<td>27926219.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>台新戊特<br/>2887E.TW</td>
+<td>5727275.0</td>
+<td class="text-danger">0.0</td>
+<td>51.2</td>
+<td>51.4</td>
+<td>51.4</td>
+<td>51.1</td>
+<td>111615.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>台新戊特二<br/>2887F.TW</td>
+<td>4797.0</td>
+<td class="text-danger">0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>105.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>新光金<br/>2888.TW</td>
+<td>480436756.0</td>
+<td class="text-danger">-0.15</td>
+<td>11.6</td>
+<td>11.55</td>
+<td>11.65</td>
+<td>11.55</td>
+<td>41517118.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>新光金乙特<br/>2888B.TW</td>
+<td>3214920.0</td>
+<td class="text-danger">0.0</td>
+<td>35.25</td>
+<td>35.25</td>
+<td>35.3</td>
+<td>35.2</td>
+<td>91245.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>國票金<br/>2889.TW</td>
+<td>134755510.0</td>
+<td class="text-success">0.1</td>
+<td>14.5</td>
+<td>14.8</td>
+<td>14.8</td>
+<td>14.3</td>
+<td>9284692.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>永豐金<br/>2890.TW</td>
+<td>455993184.0</td>
+<td class="text-danger">-0.3</td>
+<td>23.25</td>
+<td>23.25</td>
+<td>23.55</td>
+<td>23.05</td>
+<td>19551486.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>中信金<br/>2891.TW</td>
+<td>1925573844.0</td>
+<td class="text-danger">-0.35</td>
+<td>37.5</td>
+<td>37.4</td>
+<td>37.75</td>
+<td>37.25</td>
+<td>51349149.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>中信金乙特<br/>2891B.TW</td>
+<td>1350638.0</td>
+<td class="text-success">0.1</td>
+<td>60.6</td>
+<td>60.8</td>
+<td>60.8</td>
+<td>60.6</td>
+<td>22273.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>中信金丙特<br/>2891C.TW</td>
+<td>194298.0</td>
+<td class="text-danger">0.0</td>
+<td>56.6</td>
+<td>56.4</td>
+<td>56.6</td>
+<td>56.0</td>
+<td>3451.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>第一金<br/>2892.TW</td>
+<td>561870574.0</td>
+<td class="text-danger">-0.25</td>
+<td>27.15</td>
+<td>27.2</td>
+<td>27.5</td>
+<td>27.1</td>
+<td>20610276.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>王道銀行<br/>2897.TW</td>
+<td>13314691.0</td>
+<td class="text-danger">-0.01</td>
+<td>9.9</td>
+<td>9.86</td>
+<td>9.9</td>
+<td>9.81</td>
+<td>1351265.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>遠百<br/>2903.TW</td>
+<td>47370288.0</td>
+<td class="text-success">0.3</td>
+<td>24.75</td>
+<td>25.2</td>
+<td>25.2</td>
+<td>24.5</td>
+<td>1892741.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>三商<br/>2905.TW</td>
+<td>11532434.0</td>
+<td class="text-danger">-0.15</td>
+<td>16.05</td>
+<td>16.05</td>
+<td>16.15</td>
+<td>15.9</td>
+<td>718793.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>特力<br/>2908.TW</td>
+<td>10535403.0</td>
+<td class="text-success">0.05</td>
+<td>20.15</td>
+<td>20.2</td>
+<td>20.3</td>
+<td>20.1</td>
+<td>521489.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>統一超<br/>2912.TW</td>
+<td>455068442.0</td>
+<td class="text-danger">-0.5</td>
+<td>269.5</td>
+<td>270.5</td>
+<td>272.0</td>
+<td>268.0</td>
+<td>1683522.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>農林<br/>2913.TW</td>
+<td>15659780.0</td>
+<td class="text-danger">0.0</td>
+<td>20.45</td>
+<td>20.6</td>
+<td>20.7</td>
+<td>20.3</td>
+<td>762923.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>潤泰全<br/>2915.TW</td>
+<td>218797383.0</td>
+<td class="text-success">0.2</td>
+<td>76.5</td>
+<td>77.4</td>
+<td>77.4</td>
+<td>75.9</td>
+<td>2856624.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>鼎固-KY<br/>2923.TW</td>
+<td>2814414.0</td>
+<td class="text-success">0.55</td>
+<td>29.5</td>
+<td>31.0</td>
+<td>31.0</td>
+<td>28.8</td>
+<td>94328.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>健和興<br/>3003.TW</td>
+<td>215010414.0</td>
+<td class="text-success">2.5</td>
+<td>75.0</td>
+<td>78.0</td>
+<td>78.5</td>
+<td>73.5</td>
+<td>2822566.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>神基<br/>3005.TW</td>
+<td>148388530.0</td>
+<td class="text-success">1.0</td>
+<td>103.0</td>
+<td>104.5</td>
+<td>105.5</td>
+<td>102.5</td>
+<td>1423158.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>晶豪科<br/>3006.TW</td>
+<td>55684735.0</td>
+<td class="text-success">0.6</td>
+<td>61.4</td>
+<td>62.2</td>
+<td>62.4</td>
+<td>60.6</td>
+<td>901567.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>大立光<br/>3008.TW</td>
+<td>1237289785.0</td>
+<td class="text-danger">-10.0</td>
+<td>2415.0</td>
+<td>2435.0</td>
+<td>2460.0</td>
+<td>2405.0</td>
+<td>508958.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>華立<br/>3010.TW</td>
+<td>96926975.0</td>
+<td class="text-danger">0.0</td>
+<td>120.5</td>
+<td>121.5</td>
+<td>121.5</td>
+<td>119.5</td>
+<td>803152.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>晟銘電<br/>3013.TW</td>
+<td>2645648332.0</td>
+<td class="text-success">7.0</td>
+<td>139.0</td>
+<td>146.0</td>
+<td>147.5</td>
+<td>138.0</td>
+<td>18313020.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>聯陽<br/>3014.TW</td>
+<td>103914379.0</td>
+<td class="text-success">2.0</td>
+<td>139.0</td>
+<td>140.5</td>
+<td>141.5</td>
+<td>138.0</td>
+<td>742736.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>全漢<br/>3015.TW</td>
+<td>91330501.0</td>
+<td class="text-success">2.8</td>
+<td>62.4</td>
+<td>65.3</td>
+<td>65.4</td>
+<td>61.6</td>
+<td>1417883.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>嘉晶<br/>3016.TW</td>
+<td>5144888.0</td>
+<td class="text-success">0.1</td>
+<td>50.8</td>
+<td>51.1</td>
+<td>51.2</td>
+<td>50.2</td>
+<td>101151.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>奇鋐<br/>3017.TW</td>
+<td>2302101703.0</td>
+<td class="text-success">3.0</td>
+<td>632.0</td>
+<td>643.0</td>
+<td>646.0</td>
+<td>630.0</td>
+<td>3597478.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>亞光<br/>3019.TW</td>
+<td>353047005.0</td>
+<td class="text-success">3.0</td>
+<td>103.5</td>
+<td>107.5</td>
+<td>108.0</td>
+<td>103.5</td>
+<td>3325126.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>威強電<br/>3022.TW</td>
+<td>69665228.0</td>
+<td class="text-success">0.7</td>
+<td>78.1</td>
+<td>79.0</td>
+<td>79.7</td>
+<td>77.7</td>
+<td>884980.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>信邦<br/>3023.TW</td>
+<td>305530049.0</td>
+<td class="text-success">6.0</td>
+<td>250.0</td>
+<td>255.5</td>
+<td>256.5</td>
+<td>247.5</td>
+<td>1206036.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>禾伸堂<br/>3026.TW</td>
+<td>9954983.0</td>
+<td class="text-danger">-0.2</td>
+<td>89.1</td>
+<td>89.7</td>
+<td>89.7</td>
+<td>88.8</td>
+<td>111636.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>增你強<br/>3028.TW</td>
+<td>2475554.0</td>
+<td class="text-danger">-0.1</td>
+<td>31.0</td>
+<td>31.05</td>
+<td>31.15</td>
+<td>31.0</td>
+<td>79628.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>零壹<br/>3029.TW</td>
+<td>383258316.0</td>
+<td class="text-success">1.5</td>
+<td>112.5</td>
+<td>114.5</td>
+<td>114.5</td>
+<td>112.0</td>
+<td>3376600.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>德律<br/>3030.TW</td>
+<td>217794877.0</td>
+<td class="text-danger">-0.5</td>
+<td>129.0</td>
+<td>130.0</td>
+<td>130.5</td>
+<td>127.0</td>
+<td>1691535.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>偉訓<br/>3032.TW</td>
+<td>673633186.0</td>
+<td class="text-success">1.6</td>
+<td>80.2</td>
+<td>82.5</td>
+<td>83.9</td>
+<td>80.1</td>
+<td>8169606.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>威健<br/>3033.TW</td>
+<td>139192181.0</td>
+<td class="text-success">0.45</td>
+<td>35.0</td>
+<td>35.3</td>
+<td>35.35</td>
+<td>34.55</td>
+<td>3968161.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>聯詠<br/>3034.TW</td>
+<td>1236461341.0</td>
+<td class="text-success">1.0</td>
+<td>480.0</td>
+<td>484.0</td>
+<td>489.0</td>
+<td>477.0</td>
+<td>2550789.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>智原<br/>3035.TW</td>
+<td>554519631.0</td>
+<td class="text-success">4.5</td>
+<td>217.0</td>
+<td>222.0</td>
+<td>223.0</td>
+<td>214.5</td>
+<td>2529962.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>文曄<br/>3036.TW</td>
+<td>170968572.0</td>
+<td class="text-success">2.0</td>
+<td>108.0</td>
+<td>110.0</td>
+<td>111.0</td>
+<td>107.0</td>
+<td>1565284.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>欣興<br/>3037.TW</td>
+<td>1556528730.0</td>
+<td class="text-success">2.0</td>
+<td>145.0</td>
+<td>149.0</td>
+<td>151.0</td>
+<td>144.0</td>
+<td>10490704.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>晶技<br/>3042.TW</td>
+<td>75892399.0</td>
+<td class="text-danger">0.0</td>
+<td>105.0</td>
+<td>105.0</td>
+<td>106.0</td>
+<td>104.0</td>
+<td>722106.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>健鼎<br/>3044.TW</td>
+<td>175821925.0</td>
+<td class="text-success">0.5</td>
+<td>187.5</td>
+<td>189.0</td>
+<td>190.0</td>
+<td>185.5</td>
+<td>932916.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>台灣大<br/>3045.TW</td>
+<td>403257232.0</td>
+<td class="text-danger">0.0</td>
+<td>112.5</td>
+<td>113.0</td>
+<td>114.0</td>
+<td>112.0</td>
+<td>3561438.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>訊舟<br/>3047.TW</td>
+<td>113898048.0</td>
+<td class="text-danger">-0.45</td>
+<td>32.75</td>
+<td>32.5</td>
+<td>32.95</td>
+<td>32.3</td>
+<td>3497707.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>益登<br/>3048.TW</td>
+<td>21958675.0</td>
+<td class="text-success">0.5</td>
+<td>32.2</td>
+<td>32.7</td>
+<td>32.7</td>
+<td>31.7</td>
+<td>683810.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>精金<br/>3049.TW</td>
+<td>18916349.0</td>
+<td class="text-danger">0.0</td>
+<td>10.4</td>
+<td>10.5</td>
+<td>10.6</td>
+<td>10.35</td>
+<td>1806431.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>蔚華科<br/>3055.TW</td>
+<td>42795925.0</td>
+<td class="text-danger">-0.6</td>
+<td>67.9</td>
+<td>67.0</td>
+<td>68.0</td>
+<td>65.4</td>
+<td>638730.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>富華新<br/>3056.TW</td>
+<td>33197631.0</td>
+<td class="text-success">0.25</td>
+<td>33.9</td>
+<td>34.35</td>
+<td>34.35</td>
+<td>33.4</td>
+<td>976748.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>華晶科<br/>3059.TW</td>
+<td>18184565.0</td>
+<td class="text-success">0.15</td>
+<td>31.85</td>
+<td>32.0</td>
+<td>32.15</td>
+<td>31.65</td>
+<td>568978.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>建漢<br/>3062.TW</td>
+<td>151825394.0</td>
+<td class="text-success">0.8</td>
+<td>31.7</td>
+<td>32.6</td>
+<td>32.6</td>
+<td>31.4</td>
+<td>4732081.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>日電貿<br/>3090.TW</td>
+<td>1605428185.0</td>
+<td class="text-danger">-1.4</td>
+<td>72.1</td>
+<td>73.3</td>
+<td>75.2</td>
+<td>71.1</td>
+<td>22002634.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>一零四<br/>3130.TW</td>
+<td>2779942.0</td>
+<td class="text-danger">0.0</td>
+<td>220.5</td>
+<td>220.0</td>
+<td>220.5</td>
+<td>220.0</td>
+<td>12620.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>耀登<br/>3138.TW</td>
+<td>9353410.0</td>
+<td class="text-success">1.0</td>
+<td>98.9</td>
+<td>101.0</td>
+<td>102.5</td>
+<td>98.7</td>
+<td>92666.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>景碩<br/>3189.TW</td>
+<td>272187046.0</td>
+<td class="text-success">2.0</td>
+<td>92.5</td>
+<td>94.5</td>
+<td>94.6</td>
+<td>91.9</td>
+<td>2910701.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>全科<br/>3209.TW</td>
+<td>23468110.0</td>
+<td class="text-success">0.2</td>
+<td>36.3</td>
+<td>36.55</td>
+<td>36.8</td>
+<td>36.2</td>
+<td>641590.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>緯創<br/>3231.TW</td>
+<td>3202474083.0</td>
+<td class="text-danger">0.0</td>
+<td>111.5</td>
+<td>113.5</td>
+<td>115.0</td>
+<td>111.0</td>
+<td>28317958.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>昇陽<br/>3266.TW</td>
+<td>822879.0</td>
+<td class="text-success">0.1</td>
+<td>19.0</td>
+<td>19.25</td>
+<td>19.25</td>
+<td>18.85</td>
+<td>43101.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>昇貿<br/>3305.TW</td>
+<td>13385373.0</td>
+<td class="text-danger">-0.1</td>
+<td>63.3</td>
+<td>63.5</td>
+<td>63.9</td>
+<td>62.5</td>
+<td>210927.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>弘憶股<br/>3312.TW</td>
+<td>40338910.0</td>
+<td class="text-danger">-0.3</td>
+<td>58.8</td>
+<td>58.7</td>
+<td>59.4</td>
+<td>58.6</td>
+<td>683909.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>泰碩<br/>3338.TW</td>
+<td>307471871.0</td>
+<td class="text-success">0.6</td>
+<td>72.1</td>
+<td>73.4</td>
+<td>73.9</td>
+<td>72.1</td>
+<td>4197053.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>新日興<br/>3376.TW</td>
+<td>584582593.0</td>
+<td class="text-success">10.0</td>
+<td>183.5</td>
+<td>193.5</td>
+<td>194.5</td>
+<td>182.0</td>
+<td>3074934.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>明泰<br/>3380.TW</td>
+<td>80221980.0</td>
+<td class="text-success">0.3</td>
+<td>37.0</td>
+<td>37.3</td>
+<td>37.45</td>
+<td>36.45</td>
+<td>2165115.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>玉晶光<br/>3406.TW</td>
+<td>132846206.0</td>
+<td class="text-success">5.5</td>
+<td>436.5</td>
+<td>445.5</td>
+<td>445.5</td>
+<td>436.0</td>
+<td>300661.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>京鼎<br/>3413.TW</td>
+<td>155179803.0</td>
+<td class="text-success">3.5</td>
+<td>304.5</td>
+<td>308.5</td>
+<td>310.0</td>
+<td>302.0</td>
+<td>505877.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>融程電<br/>3416.TW</td>
+<td>19734168.0</td>
+<td class="text-danger">-1.0</td>
+<td>152.5</td>
+<td>151.5</td>
+<td>152.5</td>
+<td>150.0</td>
+<td>130340.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>創意<br/>3443.TW</td>
+<td>1915454100.0</td>
+<td class="text-success">40.0</td>
+<td>1155.0</td>
+<td>1190.0</td>
+<td>1200.0</td>
+<td>1140.0</td>
+<td>1631870.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>聯鈞<br/>3450.TW</td>
+<td>6379203791.0</td>
+<td class="text-success">12.0</td>
+<td>230.5</td>
+<td>244.5</td>
+<td>245.0</td>
+<td>230.5</td>
+<td>26620978.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>晶睿<br/>3454.TW</td>
+<td>26619989.0</td>
+<td class="text-danger">0.0</td>
+<td>125.0</td>
+<td>124.0</td>
+<td>126.5</td>
+<td>122.0</td>
+<td>213181.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>群創<br/>3481.TW</td>
+<td>517271990.0</td>
+<td class="text-success">0.15</td>
+<td>14.95</td>
+<td>15.15</td>
+<td>15.25</td>
+<td>14.85</td>
+<td>34275990.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>維熹<br/>3501.TW</td>
+<td>20884832.0</td>
+<td class="text-success">0.2</td>
+<td>63.5</td>
+<td>64.2</td>
+<td>65.0</td>
+<td>63.4</td>
+<td>325048.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>揚明光<br/>3504.TW</td>
+<td>3801884.0</td>
+<td class="text-danger">-0.2</td>
+<td>55.6</td>
+<td>56.1</td>
+<td>56.8</td>
+<td>55.4</td>
+<td>67771.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>華擎<br/>3515.TW</td>
+<td>108925614.0</td>
+<td class="text-success">3.5</td>
+<td>229.0</td>
+<td>236.0</td>
+<td>236.5</td>
+<td>229.0</td>
+<td>465387.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>晶相光<br/>3530.TW</td>
+<td>7606489.0</td>
+<td class="text-success">1.9</td>
+<td>87.9</td>
+<td>89.8</td>
+<td>89.9</td>
+<td>87.0</td>
+<td>85246.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>台勝科<br/>3532.TW</td>
+<td>62212462.0</td>
+<td class="text-danger">-1.0</td>
+<td>113.5</td>
+<td>113.0</td>
+<td>115.0</td>
+<td>113.0</td>
+<td>546925.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>嘉澤<br/>3533.TW</td>
+<td>3228494985.0</td>
+<td class="text-success">130.0</td>
+<td>1645.0</td>
+<td>1790.0</td>
+<td>1805.0</td>
+<td>1635.0</td>
+<td>1831528.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>敦泰<br/>3545.TW</td>
+<td>103950844.0</td>
+<td class="text-success">1.6</td>
+<td>87.4</td>
+<td>87.9</td>
+<td>88.1</td>
+<td>85.0</td>
+<td>1189177.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>嘉威<br/>3557.TW</td>
+<td>8501382.0</td>
+<td class="text-danger">-0.2</td>
+<td>72.6</td>
+<td>72.3</td>
+<td>73.0</td>
+<td>72.1</td>
+<td>117269.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>牧德<br/>3563.TW</td>
+<td>314620570.0</td>
+<td class="text-success">4.5</td>
+<td>368.0</td>
+<td>373.5</td>
+<td>376.5</td>
+<td>356.0</td>
+<td>865347.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>聯合再生<br/>3576.TW</td>
+<td>23681568.0</td>
+<td class="text-danger">-0.25</td>
+<td>10.85</td>
+<td>10.75</td>
+<td>10.85</td>
+<td>10.65</td>
+<td>2202925.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>辛耘<br/>3583.TW</td>
+<td>405546605.0</td>
+<td class="text-success">5.5</td>
+<td>405.0</td>
+<td>415.0</td>
+<td>415.5</td>
+<td>403.0</td>
+<td>986596.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>瑞鼎<br/>3592.TW</td>
+<td>304282669.0</td>
+<td class="text-success">3.0</td>
+<td>365.0</td>
+<td>370.0</td>
+<td>373.0</td>
+<td>361.5</td>
+<td>823591.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>智易<br/>3596.TW</td>
+<td>303876997.0</td>
+<td class="text-success">1.0</td>
+<td>164.5</td>
+<td>165.5</td>
+<td>166.5</td>
+<td>162.5</td>
+<td>1846539.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>宏致<br/>3605.TW</td>
+<td>32411687.0</td>
+<td class="text-success">1.0</td>
+<td>50.1</td>
+<td>51.2</td>
+<td>51.4</td>
+<td>49.6</td>
+<td>642317.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>碩天<br/>3617.TW</td>
+<td>329268189.0</td>
+<td class="text-success">7.0</td>
+<td>348.0</td>
+<td>356.0</td>
+<td>358.0</td>
+<td>343.5</td>
+<td>934896.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>洋華<br/>3622.TW</td>
+<td>65671904.0</td>
+<td class="text-success">1.2</td>
+<td>70.2</td>
+<td>71.7</td>
+<td>71.7</td>
+<td>69.6</td>
+<td>924149.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>健策<br/>3653.TW</td>
+<td>1114859630.0</td>
+<td class="text-success">75.0</td>
+<td>1295.0</td>
+<td>1385.0</td>
+<td>1395.0</td>
+<td>1295.0</td>
+<td>816265.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>世芯-KY<br/>3661.TW</td>
+<td>3927387150.0</td>
+<td class="text-success">75.0</td>
+<td>2135.0</td>
+<td>2215.0</td>
+<td>2215.0</td>
+<td>2125.0</td>
+<td>1805434.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>貿聯-KY<br/>3665.TW</td>
+<td>3533540317.0</td>
+<td class="text-success">43.0</td>
+<td>602.0</td>
+<td>647.0</td>
+<td>658.0</td>
+<td>601.0</td>
+<td>5523237.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>TPK-KY<br/>3673.TW</td>
+<td>88502202.0</td>
+<td class="text-success">1.0</td>
+<td>40.45</td>
+<td>41.45</td>
+<td>41.75</td>
+<td>40.3</td>
+<td>2145805.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>新至陞<br/>3679.TW</td>
+<td>2678751.0</td>
+<td class="text-success">1.0</td>
+<td>129.0</td>
+<td>130.0</td>
+<td>130.0</td>
+<td>128.5</td>
+<td>20686.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>海華<br/>3694.TW</td>
+<td>15244122.0</td>
+<td class="text-success">0.15</td>
+<td>43.8</td>
+<td>44.1</td>
+<td>44.35</td>
+<td>43.65</td>
+<td>346934.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>大眾控<br/>3701.TW</td>
+<td>17451305.0</td>
+<td class="text-danger">-0.05</td>
+<td>38.2</td>
+<td>38.15</td>
+<td>38.6</td>
+<td>37.7</td>
+<td>457064.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>大聯大<br/>3702.TW</td>
+<td>446317088.0</td>
+<td class="text-success">0.4</td>
+<td>69.7</td>
+<td>70.4</td>
+<td>71.4</td>
+<td>69.0</td>
+<td>6303229.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>大聯大甲特<br/>3702A.TW</td>
+<td>19574901.0</td>
+<td class="text-danger">0.0</td>
+<td>51.4</td>
+<td>51.4</td>
+<td>51.4</td>
+<td>51.3</td>
+<td>380913.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>欣陸<br/>3703.TW</td>
+<td>18173592.0</td>
+<td class="text-danger">0.0</td>
+<td>30.3</td>
+<td>30.4</td>
+<td>30.45</td>
+<td>30.05</td>
+<td>599324.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>合勤控<br/>3704.TW</td>
+<td>25804457.0</td>
+<td class="text-success">0.65</td>
+<td>38.9</td>
+<td>39.65</td>
+<td>39.9</td>
+<td>38.5</td>
+<td>655487.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>永信<br/>3705.TW</td>
+<td>13487644.0</td>
+<td class="text-success">0.1</td>
+<td>55.8</td>
+<td>56.2</td>
+<td>56.5</td>
+<td>55.8</td>
+<td>239972.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>神達<br/>3706.TW</td>
+<td>25176137173.0</td>
+<td class="text-success">0.8</td>
+<td>82.8</td>
+<td>84.0</td>
+<td>91.0</td>
+<td>81.2</td>
+<td>294498987.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>上緯投控<br/>3708.TW</td>
+<td>97059295.0</td>
+<td class="text-success">2.1</td>
+<td>92.9</td>
+<td>95.0</td>
+<td>95.5</td>
+<td>91.6</td>
+<td>1038983.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>日月光投控<br/>3711.TW</td>
+<td>1764559901.0</td>
+<td class="text-success">4.5</td>
+<td>146.5</td>
+<td>151.5</td>
+<td>152.5</td>
+<td>146.0</td>
+<td>11717231.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>永崴投控<br/>3712.TW</td>
+<td>423107884.0</td>
+<td class="text-success">0.3</td>
+<td>68.7</td>
+<td>69.9</td>
+<td>71.0</td>
+<td>68.3</td>
+<td>6064016.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>富采<br/>3714.TW</td>
+<td>61912894.0</td>
+<td class="text-danger">-0.2</td>
+<td>44.4</td>
+<td>44.3</td>
+<td>44.5</td>
+<td>43.65</td>
+<td>1402249.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>定穎投控<br/>3715.TW</td>
+<td>107893631.0</td>
+<td class="text-success">1.0</td>
+<td>60.7</td>
+<td>61.7</td>
+<td>61.7</td>
+<td>60.1</td>
+<td>1764270.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>佳醫<br/>4104.TW</td>
+<td>4158156.0</td>
+<td class="text-danger">0.0</td>
+<td>86.7</td>
+<td>86.7</td>
+<td>86.9</td>
+<td>86.4</td>
+<td>47968.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>旭富<br/>4119.TW</td>
+<td>22929201.0</td>
+<td class="text-success">1.2</td>
+<td>95.0</td>
+<td>96.2</td>
+<td>96.3</td>
+<td>94.7</td>
+<td>239513.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>麗豐-KY<br/>4137.TW</td>
+<td>15362643.0</td>
+<td class="text-danger">-1.0</td>
+<td>116.0</td>
+<td>115.5</td>
+<td>117.5</td>
+<td>114.0</td>
+<td>132561.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>國光生<br/>4142.TW</td>
+<td>24319410.0</td>
+<td class="text-danger">0.0</td>
+<td>21.05</td>
+<td>21.2</td>
+<td>21.3</td>
+<td>20.85</td>
+<td>1154437.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>承業醫<br/>4164.TW</td>
+<td>8222562.0</td>
+<td class="text-success">0.3</td>
+<td>40.4</td>
+<td>41.0</td>
+<td>41.5</td>
+<td>40.2</td>
+<td>201124.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>炎洲<br/>4306.TW</td>
+<td>11271371.0</td>
+<td class="text-success">0.1</td>
+<td>17.9</td>
+<td>18.0</td>
+<td>18.0</td>
+<td>17.75</td>
+<td>629467.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>廣越<br/>4438.TW</td>
+<td>3737458.0</td>
+<td class="text-danger">-0.3</td>
+<td>97.4</td>
+<td>97.1</td>
+<td>98.4</td>
+<td>96.6</td>
+<td>38317.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>東台<br/>4526.TW</td>
+<td>117804686.0</td>
+<td class="text-success">0.45</td>
+<td>32.0</td>
+<td>32.5</td>
+<td>33.2</td>
+<td>32.0</td>
+<td>3628887.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>瑞智<br/>4532.TW</td>
+<td>20140735.0</td>
+<td class="text-danger">-0.05</td>
+<td>26.45</td>
+<td>26.6</td>
+<td>26.65</td>
+<td>26.3</td>
+<td>760546.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>拓凱<br/>4536.TW</td>
+<td>26915775.0</td>
+<td class="text-danger">-1.0</td>
+<td>195.0</td>
+<td>196.0</td>
+<td>197.5</td>
+<td>194.5</td>
+<td>137203.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>智伸科<br/>4551.TW</td>
+<td>35419282.0</td>
+<td class="text-danger">-1.5</td>
+<td>114.0</td>
+<td>115.0</td>
+<td>116.0</td>
+<td>113.5</td>
+<td>308598.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>時碩工業<br/>4566.TW</td>
+<td>38266809.0</td>
+<td class="text-success">1.2</td>
+<td>76.3</td>
+<td>77.4</td>
+<td>77.4</td>
+<td>75.6</td>
+<td>498706.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>鈞興-KY<br/>4571.TW</td>
+<td>55869809.0</td>
+<td class="text-danger">-0.5</td>
+<td>164.0</td>
+<td>164.5</td>
+<td>166.5</td>
+<td>162.5</td>
+<td>340328.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>大銀微系統<br/>4576.TW</td>
+<td>149419317.0</td>
+<td class="text-success">2.5</td>
+<td>114.0</td>
+<td>115.5</td>
+<td>117.0</td>
+<td>112.5</td>
+<td>1307255.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>台灣精銳<br/>4583.TW</td>
+<td>584186595.0</td>
+<td class="text-success">19.0</td>
+<td>658.0</td>
+<td>678.0</td>
+<td>680.0</td>
+<td>647.0</td>
+<td>876422.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>泰博<br/>4736.TW</td>
+<td>5918082.0</td>
+<td class="text-danger">0.0</td>
+<td>147.0</td>
+<td>147.5</td>
+<td>148.0</td>
+<td>146.5</td>
+<td>40097.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>康普<br/>4739.TW</td>
+<td>13225999.0</td>
+<td class="text-success">1.1</td>
+<td>59.7</td>
+<td>61.1</td>
+<td>61.1</td>
+<td>59.3</td>
+<td>219418.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>台耀<br/>4746.TW</td>
+<td>119692868.0</td>
+<td class="text-success">0.4</td>
+<td>74.5</td>
+<td>76.0</td>
+<td>76.9</td>
+<td>74.2</td>
+<td>1577152.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>三福化<br/>4755.TW</td>
+<td>50631222.0</td>
+<td class="text-danger">-4.0</td>
+<td>136.0</td>
+<td>134.0</td>
+<td>138.5</td>
+<td>132.0</td>
+<td>376098.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>材料-KY<br/>4763.TW</td>
+<td>1697881641.0</td>
+<td class="text-success">21.0</td>
+<td>866.0</td>
+<td>889.0</td>
+<td>893.0</td>
+<td>861.0</td>
+<td>1922792.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>南寶<br/>4766.TW</td>
+<td>71582537.0</td>
+<td class="text-danger">-4.0</td>
+<td>325.5</td>
+<td>322.0</td>
+<td>326.0</td>
+<td>321.5</td>
+<td>221486.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>上品<br/>4770.TW</td>
+<td>32808101.0</td>
+<td class="text-success">6.5</td>
+<td>310.0</td>
+<td>321.5</td>
+<td>321.5</td>
+<td>309.5</td>
+<td>102909.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>望隼<br/>4771.TW</td>
+<td>14610162.0</td>
+<td class="text-danger">-1.5</td>
+<td>185.5</td>
+<td>185.0</td>
+<td>186.5</td>
+<td>183.0</td>
+<td>78979.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>遠傳<br/>4904.TW</td>
+<td>327088860.0</td>
+<td class="text-danger">-0.8</td>
+<td>90.0</td>
+<td>89.9</td>
+<td>90.8</td>
+<td>89.4</td>
+<td>3632683.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>正文<br/>4906.TW</td>
+<td>67435444.0</td>
+<td class="text-success">0.8</td>
+<td>35.1</td>
+<td>36.0</td>
+<td>36.1</td>
+<td>34.75</td>
+<td>1883628.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>聯德控股-KY<br/>4912.TW</td>
+<td>5805030.0</td>
+<td class="text-danger">0.0</td>
+<td>106.5</td>
+<td>107.0</td>
+<td>108.0</td>
+<td>106.0</td>
+<td>54207.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>致伸<br/>4915.TW</td>
+<td>120086820.0</td>
+<td class="text-danger">-0.2</td>
+<td>78.5</td>
+<td>78.9</td>
+<td>79.5</td>
+<td>78.1</td>
+<td>1522691.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>新唐<br/>4919.TW</td>
+<td>89336161.0</td>
+<td class="text-success">1.4</td>
+<td>89.0</td>
+<td>90.8</td>
+<td>90.8</td>
+<td>88.3</td>
+<td>993043.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>泰鼎-KY<br/>4927.TW</td>
+<td>361477267.0</td>
+<td class="text-danger">-0.9</td>
+<td>42.8</td>
+<td>42.2</td>
+<td>43.7</td>
+<td>41.8</td>
+<td>8461689.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>茂林-KY<br/>4935.TW</td>
+<td>4426119.0</td>
+<td class="text-danger">-0.3</td>
+<td>62.0</td>
+<td>61.8</td>
+<td>63.0</td>
+<td>61.3</td>
+<td>71150.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>和碩<br/>4938.TW</td>
+<td>356960064.0</td>
+<td class="text-danger">-0.8</td>
+<td>94.5</td>
+<td>94.3</td>
+<td>95.3</td>
+<td>93.7</td>
+<td>3776480.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>嘉彰<br/>4942.TW</td>
+<td>1861012.0</td>
+<td class="text-danger">-0.1</td>
+<td>41.1</td>
+<td>41.2</td>
+<td>41.55</td>
+<td>41.1</td>
+<td>45094.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>凌通<br/>4952.TW</td>
+<td>4508993.0</td>
+<td class="text-success">0.1</td>
+<td>50.0</td>
+<td>50.1</td>
+<td>50.8</td>
+<td>49.5</td>
+<td>89692.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>臻鼎-KY<br/>4958.TW</td>
+<td>492479136.0</td>
+<td class="text-danger">-1.0</td>
+<td>113.5</td>
+<td>114.5</td>
+<td>116.0</td>
+<td>112.5</td>
+<td>4300670.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>誠美材<br/>4960.TW</td>
+<td>6438467.0</td>
+<td class="text-success">0.1</td>
+<td>12.6</td>
+<td>12.8</td>
+<td>12.85</td>
+<td>12.55</td>
+<td>504262.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>天鈺<br/>4961.TW</td>
+<td>119351946.0</td>
+<td class="text-success">6.0</td>
+<td>232.5</td>
+<td>240.0</td>
+<td>240.0</td>
+<td>231.0</td>
+<td>501703.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>十銓<br/>4967.TW</td>
+<td>61107492.0</td>
+<td class="text-danger">-0.5</td>
+<td>86.3</td>
+<td>85.8</td>
+<td>86.8</td>
+<td>85.6</td>
+<td>709952.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>立積<br/>4968.TW</td>
+<td>2681716283.0</td>
+<td class="text-success">19.0</td>
+<td>193.0</td>
+<td>211.0</td>
+<td>211.0</td>
+<td>189.0</td>
+<td>13162961.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>佳凌<br/>4976.TW</td>
+<td>7072572.0</td>
+<td class="text-success">0.3</td>
+<td>36.65</td>
+<td>37.1</td>
+<td>37.55</td>
+<td>36.5</td>
+<td>190966.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>眾達-KY<br/>4977.TW</td>
+<td>768013091.0</td>
+<td class="text-success">5.5</td>
+<td>112.5</td>
+<td>118.0</td>
+<td>119.5</td>
+<td>111.5</td>
+<td>6599447.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>傳奇<br/>4994.TW</td>
+<td>2038971.0</td>
+<td class="text-success">1.5</td>
+<td>107.0</td>
+<td>108.5</td>
+<td>108.5</td>
+<td>106.5</td>
+<td>18931.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>三星<br/>5007.TW</td>
+<td>3139541.0</td>
+<td class="text-success">0.1</td>
+<td>54.5</td>
+<td>55.3</td>
+<td>55.4</td>
+<td>54.5</td>
+<td>57046.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>訊連<br/>5203.TW</td>
+<td>9228020.0</td>
+<td class="text-danger">0.0</td>
+<td>82.8</td>
+<td>83.0</td>
+<td>84.3</td>
+<td>82.1</td>
+<td>110733.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>全訊<br/>5222.TW</td>
+<td>47224879.0</td>
+<td class="text-danger">0.0</td>
+<td>128.0</td>
+<td>128.5</td>
+<td>129.0</td>
+<td>126.0</td>
+<td>370183.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>東科-KY<br/>5225.TW</td>
+<td>84926802.0</td>
+<td class="text-success">3.0</td>
+<td>129.5</td>
+<td>134.0</td>
+<td>134.0</td>
+<td>129.0</td>
+<td>644557.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>達興材料<br/>5234.TW</td>
+<td>458257358.0</td>
+<td class="text-danger">0.0</td>
+<td>202.0</td>
+<td>204.5</td>
+<td>209.0</td>
+<td>198.5</td>
+<td>2237925.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>乙盛-KY<br/>5243.TW</td>
+<td>171608445.0</td>
+<td class="text-success">1.5</td>
+<td>67.9</td>
+<td>69.1</td>
+<td>69.9</td>
+<td>67.5</td>
+<td>2498385.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>虹堡<br/>5258.TW</td>
+<td>61349331.0</td>
+<td class="text-success">3.2</td>
+<td>87.2</td>
+<td>91.8</td>
+<td>92.2</td>
+<td>87.2</td>
+<td>675650.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>祥碩<br/>5269.TW</td>
+<td>1100699245.0</td>
+<td class="text-success">55.0</td>
+<td>1550.0</td>
+<td>1615.0</td>
+<td>1620.0</td>
+<td>1540.0</td>
+<td>694109.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>禾聯碩<br/>5283.TW</td>
+<td>3452532.0</td>
+<td class="text-danger">0.0</td>
+<td>103.5</td>
+<td>104.5</td>
+<td>104.5</td>
+<td>103.5</td>
+<td>33177.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>界霖<br/>5285.TW</td>
+<td>73350116.0</td>
+<td class="text-success">0.3</td>
+<td>52.0</td>
+<td>52.6</td>
+<td>55.0</td>
+<td>52.0</td>
+<td>1367612.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>豐祥-KY<br/>5288.TW</td>
+<td>10409727.0</td>
+<td class="text-success">0.5</td>
+<td>191.5</td>
+<td>196.0</td>
+<td>197.0</td>
+<td>191.5</td>
+<td>53264.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>桂盟<br/>5306.TW</td>
+<td>11111864.0</td>
+<td class="text-danger">0.0</td>
+<td>123.5</td>
+<td>124.0</td>
+<td>125.0</td>
+<td>122.0</td>
+<td>89760.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>中磊<br/>5388.TW</td>
+<td>112329482.0</td>
+<td class="text-danger">-2.0</td>
+<td>110.0</td>
+<td>109.0</td>
+<td>110.0</td>
+<td>108.5</td>
+<td>1028694.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>崇越<br/>5434.TW</td>
+<td>153490874.0</td>
+<td class="text-success">0.5</td>
+<td>291.0</td>
+<td>295.5</td>
+<td>298.0</td>
+<td>291.0</td>
+<td>519854.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>瀚宇博<br/>5469.TW</td>
+<td>39923952.0</td>
+<td class="text-success">0.7</td>
+<td>49.95</td>
+<td>50.9</td>
+<td>51.3</td>
+<td>49.5</td>
+<td>789605.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>松翰<br/>5471.TW</td>
+<td>9808874.0</td>
+<td class="text-danger">-0.4</td>
+<td>42.0</td>
+<td>41.85</td>
+<td>42.25</td>
+<td>41.55</td>
+<td>234335.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>隆大<br/>5519.TW</td>
+<td>15960463.0</td>
+<td class="text-success">0.5</td>
+<td>35.3</td>
+<td>35.95</td>
+<td>36.05</td>
+<td>34.85</td>
+<td>449489.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>遠雄<br/>5522.TW</td>
+<td>128155629.0</td>
+<td class="text-success">2.3</td>
+<td>63.4</td>
+<td>65.5</td>
+<td>65.7</td>
+<td>63.2</td>
+<td>1971455.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>順天<br/>5525.TW</td>
+<td>1296888.0</td>
+<td class="text-success">0.15</td>
+<td>34.0</td>
+<td>34.25</td>
+<td>34.45</td>
+<td>33.9</td>
+<td>37910.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>鄉林<br/>5531.TW</td>
+<td>6994369.0</td>
+<td class="text-success">0.2</td>
+<td>11.15</td>
+<td>11.35</td>
+<td>11.4</td>
+<td>11.0</td>
+<td>623466.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>皇鼎<br/>5533.TW</td>
+<td>2226527.0</td>
+<td class="text-success">0.2</td>
+<td>20.65</td>
+<td>20.9</td>
+<td>20.95</td>
+<td>20.55</td>
+<td>107023.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>長虹<br/>5534.TW</td>
+<td>149835658.0</td>
+<td class="text-success">3.6</td>
+<td>86.9</td>
+<td>89.5</td>
+<td>90.8</td>
+<td>85.4</td>
+<td>1693104.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>遠雄港<br/>5607.TW</td>
+<td>7187390.0</td>
+<td class="text-success">0.1</td>
+<td>43.5</td>
+<td>44.05</td>
+<td>44.25</td>
+<td>43.2</td>
+<td>163461.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>四維航<br/>5608.TW</td>
+<td>16514935.0</td>
+<td class="text-danger">0.0</td>
+<td>17.7</td>
+<td>17.7</td>
+<td>17.95</td>
+<td>17.7</td>
+<td>928095.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>中租-KY<br/>5871.TW</td>
+<td>1575344139.0</td>
+<td class="text-danger">-2.5</td>
+<td>119.5</td>
+<td>118.5</td>
+<td>120.0</td>
+<td>117.5</td>
+<td>13275356.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>中租-KY甲特<br/>5871A.TW</td>
+<td>1770762.0</td>
+<td class="text-danger">0.0</td>
+<td>96.7</td>
+<td>96.8</td>
+<td>96.8</td>
+<td>96.6</td>
+<td>18302.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>上海商銀<br/>5876.TW</td>
+<td>712706636.0</td>
+<td class="text-danger">-0.35</td>
+<td>39.25</td>
+<td>39.25</td>
+<td>39.8</td>
+<td>38.9</td>
+<td>18104851.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>合庫金<br/>5880.TW</td>
+<td>387377359.0</td>
+<td class="text-danger">-0.2</td>
+<td>24.95</td>
+<td>24.9</td>
+<td>25.05</td>
+<td>24.85</td>
+<td>15539951.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>群益證<br/>6005.TW</td>
+<td>213826634.0</td>
+<td class="text-success">0.4</td>
+<td>22.4</td>
+<td>22.85</td>
+<td>22.85</td>
+<td>22.0</td>
+<td>9449849.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>群益期<br/>6024.TW</td>
+<td>4527004.0</td>
+<td class="text-success">0.1</td>
+<td>57.7</td>
+<td>58.2</td>
+<td>58.2</td>
+<td>57.6</td>
+<td>78118.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>邁達特<br/>6112.TW</td>
+<td>10565134.0</td>
+<td class="text-success">0.35</td>
+<td>47.5</td>
+<td>48.15</td>
+<td>48.7</td>
+<td>47.25</td>
+<td>220159.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>鎰勝<br/>6115.TW</td>
+<td>4453198.0</td>
+<td class="text-danger">-0.2</td>
+<td>52.2</td>
+<td>52.5</td>
+<td>52.7</td>
+<td>51.8</td>
+<td>85209.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>彩晶<br/>6116.TW</td>
+<td>16814791.0</td>
+<td class="text-success">0.05</td>
+<td>8.73</td>
+<td>8.77</td>
+<td>8.79</td>
+<td>8.62</td>
+<td>1928766.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>迎廣<br/>6117.TW</td>
+<td>987835414.0</td>
+<td class="text-success">5.2</td>
+<td>100.0</td>
+<td>104.5</td>
+<td>108.5</td>
+<td>98.5</td>
+<td>9370415.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>達運<br/>6120.TW</td>
+<td>6219590.0</td>
+<td class="text-success">0.15</td>
+<td>13.15</td>
+<td>13.35</td>
+<td>13.4</td>
+<td>13.1</td>
+<td>467814.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>亞翔<br/>6139.TW</td>
+<td>627282058.0</td>
+<td class="text-danger">-1.0</td>
+<td>229.0</td>
+<td>230.0</td>
+<td>231.0</td>
+<td>225.0</td>
+<td>2747265.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>嘉聯益<br/>6153.TW</td>
+<td>15583927.0</td>
+<td class="text-danger">-0.15</td>
+<td>17.2</td>
+<td>17.15</td>
+<td>17.4</td>
+<td>17.15</td>
+<td>903695.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>凌華<br/>6166.TW</td>
+<td>32016803.0</td>
+<td class="text-success">1.8</td>
+<td>71.5</td>
+<td>73.5</td>
+<td>73.5</td>
+<td>70.8</td>
+<td>441425.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>瑞儀<br/>6176.TW</td>
+<td>239423107.0</td>
+<td class="text-danger">0.0</td>
+<td>190.5</td>
+<td>190.5</td>
+<td>190.5</td>
+<td>189.0</td>
+<td>1261900.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>達麗<br/>6177.TW</td>
+<td>66149910.0</td>
+<td class="text-success">0.4</td>
+<td>43.7</td>
+<td>44.4</td>
+<td>44.6</td>
+<td>43.25</td>
+<td>1508426.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>關貿<br/>6183.TW</td>
+<td>1968125.0</td>
+<td class="text-success">0.1</td>
+<td>80.4</td>
+<td>80.9</td>
+<td>81.9</td>
+<td>79.7</td>
+<td>24325.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>大豐電<br/>6184.TW</td>
+<td>315068.0</td>
+<td class="text-danger">-0.1</td>
+<td>51.6</td>
+<td>51.8</td>
+<td>51.9</td>
+<td>51.6</td>
+<td>6090.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>豐藝<br/>6189.TW</td>
+<td>26491786.0</td>
+<td class="text-danger">-0.9</td>
+<td>85.7</td>
+<td>85.2</td>
+<td>86.1</td>
+<td>84.7</td>
+<td>309832.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>精成科<br/>6191.TW</td>
+<td>100269404.0</td>
+<td class="text-danger">0.0</td>
+<td>54.8</td>
+<td>55.0</td>
+<td>55.2</td>
+<td>54.3</td>
+<td>1830307.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>巨路<br/>6192.TW</td>
+<td>21677056.0</td>
+<td class="text-success">0.5</td>
+<td>106.0</td>
+<td>107.0</td>
+<td>107.5</td>
+<td>105.0</td>
+<td>204853.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>帆宣<br/>6196.TW</td>
+<td>45679542.0</td>
+<td class="text-danger">-0.5</td>
+<td>147.5</td>
+<td>147.0</td>
+<td>148.0</td>
+<td>145.5</td>
+<td>310911.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>佳必琪<br/>6197.TW</td>
+<td>179274649.0</td>
+<td class="text-success">5.5</td>
+<td>148.0</td>
+<td>154.0</td>
+<td>154.0</td>
+<td>147.5</td>
+<td>1178842.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>盛群<br/>6202.TW</td>
+<td>29797078.0</td>
+<td class="text-danger">-0.4</td>
+<td>51.0</td>
+<td>50.6</td>
+<td>51.0</td>
+<td>50.4</td>
+<td>588053.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>飛捷<br/>6206.TW</td>
+<td>29001147.0</td>
+<td class="text-danger">-0.3</td>
+<td>82.0</td>
+<td>82.5</td>
+<td>83.7</td>
+<td>81.5</td>
+<td>350451.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>聯茂<br/>6213.TW</td>
+<td>131548995.0</td>
+<td class="text-success">0.6</td>
+<td>74.5</td>
+<td>75.4</td>
+<td>75.6</td>
+<td>73.9</td>
+<td>1757057.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>精誠<br/>6214.TW</td>
+<td>57317549.0</td>
+<td class="text-success">1.5</td>
+<td>128.0</td>
+<td>128.5</td>
+<td>129.5</td>
+<td>127.5</td>
+<td>446204.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>尼得科超眾<br/>6230.TW</td>
+<td>26616670.0</td>
+<td class="text-danger">-3.5</td>
+<td>195.5</td>
+<td>195.0</td>
+<td>197.0</td>
+<td>192.5</td>
+<td>136551.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>華孚<br/>6235.TW</td>
+<td>193103836.0</td>
+<td class="text-danger">-1.1</td>
+<td>71.2</td>
+<td>71.0</td>
+<td>72.9</td>
+<td>71.0</td>
+<td>2691007.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>力成<br/>6239.TW</td>
+<td>266269230.0</td>
+<td class="text-success">1.0</td>
+<td>120.5</td>
+<td>122.5</td>
+<td>123.5</td>
+<td>118.0</td>
+<td>2197320.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>矽格<br/>6257.TW</td>
+<td>117274783.0</td>
+<td class="text-success">0.5</td>
+<td>68.0</td>
+<td>68.9</td>
+<td>69.0</td>
+<td>67.7</td>
+<td>1708650.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>台郡<br/>6269.TW</td>
+<td>64014338.0</td>
+<td class="text-success">0.3</td>
+<td>66.2</td>
+<td>67.1</td>
+<td>67.2</td>
+<td>65.3</td>
+<td>966247.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>同欣電<br/>6271.TW</td>
+<td>92301653.0</td>
+<td class="text-success">2.0</td>
+<td>127.5</td>
+<td>129.0</td>
+<td>129.5</td>
+<td>126.5</td>
+<td>721042.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>宏正<br/>6277.TW</td>
+<td>1400906.0</td>
+<td class="text-success">0.2</td>
+<td>77.7</td>
+<td>77.9</td>
+<td>77.9</td>
+<td>77.7</td>
+<td>18013.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>台表科<br/>6278.TW</td>
+<td>239509575.0</td>
+<td class="text-success">2.0</td>
+<td>100.5</td>
+<td>103.5</td>
+<td>103.5</td>
+<td>99.7</td>
+<td>2344130.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>全國電<br/>6281.TW</td>
+<td>1889145.0</td>
+<td class="text-success">0.2</td>
+<td>82.8</td>
+<td>83.0</td>
+<td>83.0</td>
+<td>82.8</td>
+<td>22797.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>康舒<br/>6282.TW</td>
+<td>87644769.0</td>
+<td class="text-success">0.25</td>
+<td>32.85</td>
+<td>33.1</td>
+<td>33.45</td>
+<td>32.4</td>
+<td>2657325.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>啟碁<br/>6285.TW</td>
+<td>205801753.0</td>
+<td class="text-success">0.5</td>
+<td>115.0</td>
+<td>116.0</td>
+<td>119.0</td>
+<td>114.0</td>
+<td>1758663.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>聯嘉<br/>6288.TW</td>
+<td>66459308.0</td>
+<td class="text-success">0.1</td>
+<td>29.1</td>
+<td>29.4</td>
+<td>29.65</td>
+<td>28.85</td>
+<td>2265248.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>旭隼<br/>6409.TW</td>
+<td>583881305.0</td>
+<td class="text-danger">-10.0</td>
+<td>1815.0</td>
+<td>1840.0</td>
+<td>1855.0</td>
+<td>1800.0</td>
+<td>317976.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>群電<br/>6412.TW</td>
+<td>88413374.0</td>
+<td class="text-success">5.0</td>
+<td>121.5</td>
+<td>128.0</td>
+<td>128.0</td>
+<td>121.0</td>
+<td>697306.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>樺漢<br/>6414.TW</td>
+<td>75664790.0</td>
+<td class="text-success">3.0</td>
+<td>296.5</td>
+<td>301.0</td>
+<td>301.5</td>
+<td>295.0</td>
+<td>252608.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>矽力*-KY<br/>6415.TW</td>
+<td>2134187303.0</td>
+<td class="text-success">10.0</td>
+<td>408.5</td>
+<td>421.5</td>
+<td>426.0</td>
+<td>408.0</td>
+<td>5112243.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>瑞祺電通<br/>6416.TW</td>
+<td>32135510.0</td>
+<td class="text-success">3.0</td>
+<td>120.5</td>
+<td>122.5</td>
+<td>123.0</td>
+<td>119.0</td>
+<td>265183.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>迅得<br/>6438.TW</td>
+<td>362708940.0</td>
+<td class="text-danger">0.0</td>
+<td>212.0</td>
+<td>212.0</td>
+<td>215.0</td>
+<td>210.0</td>
+<td>1704827.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>光聖<br/>6442.TW</td>
+<td>1464922102.0</td>
+<td class="text-success">16.0</td>
+<td>489.0</td>
+<td>505.0</td>
+<td>508.0</td>
+<td>481.0</td>
+<td>2939586.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>元晶<br/>6443.TW</td>
+<td>51763499.0</td>
+<td class="text-danger">-0.3</td>
+<td>19.9</td>
+<td>19.7</td>
+<td>20.2</td>
+<td>19.65</td>
+<td>2613234.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>藥華藥<br/>6446.TW</td>
+<td>1425899920.0</td>
+<td class="text-success">27.0</td>
+<td>547.0</td>
+<td>581.0</td>
+<td>597.0</td>
+<td>543.0</td>
+<td>2469964.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>鈺邦<br/>6449.TW</td>
+<td>70310607.0</td>
+<td class="text-success">1.0</td>
+<td>140.0</td>
+<td>142.0</td>
+<td>142.5</td>
+<td>138.5</td>
+<td>498543.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>訊芯-KY<br/>6451.TW</td>
+<td>272243140.0</td>
+<td class="text-success">5.5</td>
+<td>208.5</td>
+<td>216.5</td>
+<td>217.5</td>
+<td>208.0</td>
+<td>1269601.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>GIS-KY<br/>6456.TW</td>
+<td>20510123.0</td>
+<td class="text-success">0.1</td>
+<td>48.8</td>
+<td>49.05</td>
+<td>49.4</td>
+<td>48.3</td>
+<td>418875.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>台數科<br/>6464.TW</td>
+<td>802260.0</td>
+<td class="text-success">0.3</td>
+<td>79.9</td>
+<td>80.4</td>
+<td>80.5</td>
+<td>79.9</td>
+<td>10002.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>保瑞<br/>6472.TW</td>
+<td>3464646808.0</td>
+<td class="text-success">78.0</td>
+<td>782.0</td>
+<td>860.0</td>
+<td>860.0</td>
+<td>778.0</td>
+<td>4165421.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>晶碩<br/>6491.TW</td>
+<td>64453694.0</td>
+<td class="text-success">3.5</td>
+<td>368.0</td>
+<td>374.5</td>
+<td>377.5</td>
+<td>368.0</td>
+<td>172190.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>台塑化<br/>6505.TW</td>
+<td>466426854.0</td>
+<td class="text-danger">-1.05</td>
+<td>41.45</td>
+<td>40.9</td>
+<td>41.75</td>
+<td>40.75</td>
+<td>11395398.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>穎崴<br/>6515.TW</td>
+<td>2096372285.0</td>
+<td class="text-success">90.0</td>
+<td>1090.0</td>
+<td>1180.0</td>
+<td>1195.0</td>
+<td>1060.0</td>
+<td>1844687.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>捷敏-KY<br/>6525.TW</td>
+<td>10001288.0</td>
+<td class="text-danger">0.0</td>
+<td>69.0</td>
+<td>69.3</td>
+<td>69.6</td>
+<td>68.8</td>
+<td>144578.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>達發<br/>6526.TW</td>
+<td>265945989.0</td>
+<td class="text-success">15.0</td>
+<td>613.0</td>
+<td>624.0</td>
+<td>629.0</td>
+<td>609.0</td>
+<td>427581.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>愛普*<br/>6531.TW</td>
+<td>214626718.0</td>
+<td class="text-success">8.5</td>
+<td>295.0</td>
+<td>303.5</td>
+<td>303.5</td>
+<td>293.0</td>
+<td>717578.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>晶心科<br/>6533.TW</td>
+<td>38132743.0</td>
+<td class="text-success">7.0</td>
+<td>355.5</td>
+<td>366.0</td>
+<td>367.0</td>
+<td>354.0</td>
+<td>105354.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>正瀚-創<br/>6534.TW</td>
+<td>7644500.0</td>
+<td class="text-success">0.1</td>
+<td>83.0</td>
+<td>83.0</td>
+<td>83.4</td>
+<td>82.8</td>
+<td>92000.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>泰福-KY<br/>6541.TW</td>
+<td>80015524.0</td>
+<td class="text-success">6.2</td>
+<td>66.5</td>
+<td>72.3</td>
+<td>72.7</td>
+<td>66.4</td>
+<td>1117916.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>北極星藥業-KY<br/>6550.TW</td>
+<td>18015172.0</td>
+<td class="text-success">0.3</td>
+<td>50.8</td>
+<td>51.2</td>
+<td>51.7</td>
+<td>50.4</td>
+<td>352339.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>研揚<br/>6579.TW</td>
+<td>8599080.0</td>
+<td class="text-success">1.5</td>
+<td>120.5</td>
+<td>123.0</td>
+<td>123.0</td>
+<td>119.5</td>
+<td>70921.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>鋼聯<br/>6581.TW</td>
+<td>1591535.0</td>
+<td class="text-danger">0.0</td>
+<td>110.5</td>
+<td>111.0</td>
+<td>112.5</td>
+<td>110.0</td>
+<td>14308.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>申豐<br/>6582.TW</td>
+<td>1766511.0</td>
+<td class="text-success">0.4</td>
+<td>60.1</td>
+<td>61.3</td>
+<td>61.3</td>
+<td>59.7</td>
+<td>29101.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>鼎基<br/>6585.TW</td>
+<td>58427182.0</td>
+<td class="text-success">8.5</td>
+<td>130.0</td>
+<td>138.0</td>
+<td>138.5</td>
+<td>129.0</td>
+<td>430505.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>和潤企業<br/>6592.TW</td>
+<td>26548113.0</td>
+<td class="text-success">0.8</td>
+<td>84.5</td>
+<td>85.9</td>
+<td>85.9</td>
+<td>83.8</td>
+<td>312197.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>帝寶<br/>6605.TW</td>
+<td>79622396.0</td>
+<td class="text-success">2.5</td>
+<td>236.5</td>
+<td>240.0</td>
+<td>243.0</td>
+<td>234.0</td>
+<td>332616.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>科定<br/>6655.TW</td>
+<td>496749.0</td>
+<td class="text-success">1.0</td>
+<td>123.5</td>
+<td>125.5</td>
+<td>125.5</td>
+<td>123.5</td>
+<td>4002.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>緯穎<br/>6669.TW</td>
+<td>3932294545.0</td>
+<td class="text-danger">-45.0</td>
+<td>1955.0</td>
+<td>1935.0</td>
+<td>1975.0</td>
+<td>1930.0</td>
+<td>2017045.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>復盛應用<br/>6670.TW</td>
+<td>82454204.0</td>
+<td class="text-success">6.5</td>
+<td>304.5</td>
+<td>312.0</td>
+<td>312.0</td>
+<td>301.5</td>
+<td>266630.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>伊雲谷<br/>6689.TW</td>
+<td>8320255.0</td>
+<td class="text-success">0.8</td>
+<td>90.5</td>
+<td>91.8</td>
+<td>92.0</td>
+<td>89.7</td>
+<td>91142.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>洋基工程<br/>6691.TW</td>
+<td>38497564.0</td>
+<td class="text-danger">-0.5</td>
+<td>314.5</td>
+<td>314.0</td>
+<td>317.5</td>
+<td>312.0</td>
+<td>122164.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>芯鼎<br/>6695.TW</td>
+<td>12980841.0</td>
+<td class="text-success">0.3</td>
+<td>52.9</td>
+<td>53.4</td>
+<td>54.0</td>
+<td>52.8</td>
+<td>242952.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>惠特<br/>6706.TW</td>
+<td>827423151.0</td>
+<td class="text-success">1.5</td>
+<td>144.5</td>
+<td>148.5</td>
+<td>150.0</td>
+<td>142.0</td>
+<td>5639964.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>嘉基<br/>6715.TW</td>
+<td>16504396.0</td>
+<td class="text-success">5.5</td>
+<td>164.5</td>
+<td>172.0</td>
+<td>172.0</td>
+<td>164.5</td>
+<td>97531.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>力智<br/>6719.TW</td>
+<td>25655813.0</td>
+<td class="text-success">5.0</td>
+<td>218.0</td>
+<td>223.0</td>
+<td>223.0</td>
+<td>215.0</td>
+<td>116635.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>安普新<br/>6743.TW</td>
+<td>10633501.0</td>
+<td class="text-success">0.85</td>
+<td>46.4</td>
+<td>47.0</td>
+<td>47.05</td>
+<td>45.8</td>
+<td>227394.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>龍德造船<br/>6753.TW</td>
+<td>35420201.0</td>
+<td class="text-success">2.0</td>
+<td>102.0</td>
+<td>103.5</td>
+<td>103.5</td>
+<td>101.5</td>
+<td>345474.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>威鋒電子<br/>6756.TW</td>
+<td>12842536.0</td>
+<td class="text-success">1.0</td>
+<td>132.0</td>
+<td>132.5</td>
+<td>133.0</td>
+<td>130.5</td>
+<td>97315.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>台灣虎航<br/>6757.TW</td>
+<td>1535218005.0</td>
+<td class="text-danger">0.0</td>
+<td>78.3</td>
+<td>77.5</td>
+<td>81.0</td>
+<td>75.0</td>
+<td>19636277.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>志強-KY<br/>6768.TW</td>
+<td>201697800.0</td>
+<td class="text-danger">-1.0</td>
+<td>139.5</td>
+<td>138.5</td>
+<td>145.5</td>
+<td>138.5</td>
+<td>1430163.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>力積電<br/>6770.TW</td>
+<td>249812043.0</td>
+<td class="text-success">0.35</td>
+<td>16.7</td>
+<td>16.95</td>
+<td>17.0</td>
+<td>16.65</td>
+<td>14839903.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>AES-KY<br/>6781.TW</td>
+<td>526921619.0</td>
+<td class="text-success">80.0</td>
+<td>801.0</td>
+<td>880.0</td>
+<td>880.0</td>
+<td>801.0</td>
+<td>617000.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>視陽<br/>6782.TW</td>
+<td>39984805.0</td>
+<td class="text-success">1.5</td>
+<td>197.5</td>
+<td>199.0</td>
+<td>199.5</td>
+<td>195.0</td>
+<td>201629.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>采鈺<br/>6789.TW</td>
+<td>124516765.0</td>
+<td class="text-success">3.0</td>
+<td>258.0</td>
+<td>262.5</td>
+<td>264.5</td>
+<td>255.0</td>
+<td>476858.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>永豐實<br/>6790.TW</td>
+<td>1967410.0</td>
+<td class="text-danger">-0.2</td>
+<td>45.5</td>
+<td>45.7</td>
+<td>46.0</td>
+<td>45.5</td>
+<td>43053.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>富世達<br/>6805.TW</td>
+<td>3001906085.0</td>
+<td class="text-success">37.0</td>
+<td>866.0</td>
+<td>902.0</td>
+<td>905.0</td>
+<td>858.0</td>
+<td>3388203.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>森崴能源<br/>6806.TW</td>
+<td>153942269.0</td>
+<td class="text-success">0.5</td>
+<td>119.0</td>
+<td>120.0</td>
+<td>123.5</td>
+<td>117.5</td>
+<td>1284624.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>汎銓<br/>6830.TW</td>
+<td>127820238.0</td>
+<td class="text-success">2.5</td>
+<td>161.5</td>
+<td>164.0</td>
+<td>166.5</td>
+<td>160.5</td>
+<td>779843.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>錼創科技-KY創<br/>6854.TW</td>
+<td>35361500.0</td>
+<td class="text-success">3.5</td>
+<td>137.0</td>
+<td>140.5</td>
+<td>142.5</td>
+<td>132.5</td>
+<td>256000.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>永道-KY<br/>6863.TW</td>
+<td>26982972.0</td>
+<td class="text-danger">0.0</td>
+<td>216.5</td>
+<td>219.0</td>
+<td>221.5</td>
+<td>216.5</td>
+<td>122903.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>雲豹能源<br/>6869.TW</td>
+<td>137913243.0</td>
+<td class="text-success">2.0</td>
+<td>169.5</td>
+<td>172.0</td>
+<td>173.0</td>
+<td>168.0</td>
+<td>807747.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>泓德能源<br/>6873.TW</td>
+<td>90135693.0</td>
+<td class="text-success">1.5</td>
+<td>204.0</td>
+<td>204.5</td>
+<td>204.5</td>
+<td>200.5</td>
+<td>443778.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>來億-KY<br/>6890.TW</td>
+<td>223100736.0</td>
+<td class="text-success">3.5</td>
+<td>388.5</td>
+<td>392.0</td>
+<td>392.0</td>
+<td>380.0</td>
+<td>575807.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>鑽石投資<br/>6901.TW</td>
+<td>33215825.0</td>
+<td class="text-success">0.55</td>
+<td>37.1</td>
+<td>37.8</td>
+<td>38.2</td>
+<td>36.55</td>
+<td>882411.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>阜爾運通<br/>6914.TW</td>
+<td>4359232.0</td>
+<td class="text-danger">-0.5</td>
+<td>113.0</td>
+<td>113.5</td>
+<td>113.5</td>
+<td>111.5</td>
+<td>38719.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>攸泰科技<br/>6928.TW</td>
+<td>1460306.0</td>
+<td class="text-success">0.3</td>
+<td>56.2</td>
+<td>56.5</td>
+<td>57.2</td>
+<td>56.2</td>
+<td>25792.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>AMAX-KY<br/>6933.TW</td>
+<td>36800394.0</td>
+<td class="text-success">3.5</td>
+<td>229.5</td>
+<td>235.0</td>
+<td>238.0</td>
+<td>229.5</td>
+<td>157444.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>天虹<br/>6937.TW</td>
+<td>229150806.0</td>
+<td class="text-success">3.0</td>
+<td>297.5</td>
+<td>303.0</td>
+<td>308.5</td>
+<td>293.5</td>
+<td>758795.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>沛爾生醫-創<br/>6949.TW</td>
+<td>0.0</td>
+<td class="text-danger">0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>裕慶-KY<br/>6957.TW</td>
+<td>19081540.0</td>
+<td class="text-success">1.0</td>
+<td>197.0</td>
+<td>198.5</td>
+<td>200.5</td>
+<td>196.5</td>
+<td>96276.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>矽創<br/>8016.TW</td>
+<td>97393432.0</td>
+<td class="text-success">3.5</td>
+<td>203.0</td>
+<td>207.0</td>
+<td>207.0</td>
+<td>202.0</td>
+<td>475966.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>昇陽半導體<br/>8028.TW</td>
+<td>946410322.0</td>
+<td class="text-danger">-2.0</td>
+<td>132.0</td>
+<td>132.5</td>
+<td>134.5</td>
+<td>130.5</td>
+<td>7145668.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>雷虎<br/>8033.TW</td>
+<td>125608394.0</td>
+<td class="text-success">1.5</td>
+<td>55.5</td>
+<td>57.0</td>
+<td>58.3</td>
+<td>54.8</td>
+<td>2206691.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>台虹<br/>8039.TW</td>
+<td>32034840.0</td>
+<td class="text-success">0.85</td>
+<td>48.3</td>
+<td>48.8</td>
+<td>48.8</td>
+<td>47.7</td>
+<td>661103.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>南電<br/>8046.TW</td>
+<td>187916154.0</td>
+<td class="text-danger">-0.5</td>
+<td>115.5</td>
+<td>116.5</td>
+<td>117.5</td>
+<td>114.5</td>
+<td>1616782.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>長華*<br/>8070.TW</td>
+<td>199222264.0</td>
+<td class="text-danger">-0.9</td>
+<td>49.5</td>
+<td>48.8</td>
+<td>49.6</td>
+<td>48.3</td>
+<td>4069879.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>致新<br/>8081.TW</td>
+<td>48275034.0</td>
+<td class="text-success">1.5</td>
+<td>222.5</td>
+<td>225.5</td>
+<td>225.5</td>
+<td>222.0</td>
+<td>215830.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>凌巨<br/>8105.TW</td>
+<td>22573246.0</td>
+<td class="text-danger">0.0</td>
+<td>16.05</td>
+<td>16.1</td>
+<td>16.35</td>
+<td>15.9</td>
+<td>1404839.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>華東<br/>8110.TW</td>
+<td>9435806.0</td>
+<td class="text-success">0.05</td>
+<td>15.2</td>
+<td>15.35</td>
+<td>15.45</td>
+<td>15.1</td>
+<td>617120.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>至上<br/>8112.TW</td>
+<td>436628968.0</td>
+<td class="text-success">2.2</td>
+<td>61.8</td>
+<td>64.3</td>
+<td>64.3</td>
+<td>60.8</td>
+<td>6944771.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>振樺電<br/>8114.TW</td>
+<td>452238948.0</td>
+<td class="text-danger">-3.0</td>
+<td>310.0</td>
+<td>310.5</td>
+<td>313.0</td>
+<td>302.5</td>
+<td>1468041.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>福懋科<br/>8131.TW</td>
+<td>7577928.0</td>
+<td class="text-danger">-0.05</td>
+<td>30.45</td>
+<td>30.55</td>
+<td>30.55</td>
+<td>30.25</td>
+<td>249293.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>南茂<br/>8150.TW</td>
+<td>54102270.0</td>
+<td class="text-success">0.4</td>
+<td>31.45</td>
+<td>32.05</td>
+<td>32.25</td>
+<td>31.1</td>
+<td>1694496.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>達方<br/>8163.TW</td>
+<td>443144384.0</td>
+<td class="text-success">1.0</td>
+<td>49.95</td>
+<td>50.3</td>
+<td>51.5</td>
+<td>49.85</td>
+<td>8772860.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>勤誠<br/>8210.TW</td>
+<td>265018114.0</td>
+<td class="text-success">4.0</td>
+<td>283.5</td>
+<td>289.0</td>
+<td>291.0</td>
+<td>282.0</td>
+<td>923909.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>志超<br/>8213.TW</td>
+<td>10889441.0</td>
+<td class="text-danger">-0.05</td>
+<td>37.55</td>
+<td>37.5</td>
+<td>37.75</td>
+<td>37.25</td>
+<td>290289.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>明基材<br/>8215.TW</td>
+<td>12123710.0</td>
+<td class="text-danger">-0.4</td>
+<td>33.55</td>
+<td>33.2</td>
+<td>33.6</td>
+<td>33.05</td>
+<td>364291.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>富鼎<br/>8261.TW</td>
+<td>77140503.0</td>
+<td class="text-success">1.4</td>
+<td>90.0</td>
+<td>91.2</td>
+<td>91.9</td>
+<td>89.9</td>
+<td>847337.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>宇瞻<br/>8271.TW</td>
+<td>4986925.0</td>
+<td class="text-success">0.4</td>
+<td>46.9</td>
+<td>47.4</td>
+<td>47.5</td>
+<td>46.5</td>
+<td>105688.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>日友<br/>8341.TW</td>
+<td>18560686.0</td>
+<td class="text-danger">-1.2</td>
+<td>90.5</td>
+<td>90.1</td>
+<td>90.6</td>
+<td>90.0</td>
+<td>205639.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>羅昇<br/>8374.TW</td>
+<td>288034957.0</td>
+<td class="text-success">8.5</td>
+<td>126.0</td>
+<td>135.0</td>
+<td>136.5</td>
+<td>125.0</td>
+<td>2196763.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>百和興業-KY<br/>8404.TW</td>
+<td>126301941.0</td>
+<td class="text-success">0.1</td>
+<td>29.9</td>
+<td>29.75</td>
+<td>31.2</td>
+<td>29.5</td>
+<td>4180076.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>可寧衛<br/>8422.TW</td>
+<td>8972297.0</td>
+<td class="text-success">0.5</td>
+<td>180.5</td>
+<td>181.5</td>
+<td>181.5</td>
+<td>180.5</td>
+<td>49558.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>威宏-KY<br/>8442.TW</td>
+<td>3297852.0</td>
+<td class="text-success">1.5</td>
+<td>102.0</td>
+<td>103.5</td>
+<td>103.5</td>
+<td>102.0</td>
+<td>32071.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>富邦媒<br/>8454.TW</td>
+<td>140193849.0</td>
+<td class="text-danger">-3.5</td>
+<td>365.0</td>
+<td>363.5</td>
+<td>366.5</td>
+<td>361.5</td>
+<td>385964.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>柏文<br/>8462.TW</td>
+<td>2934897.0</td>
+<td class="text-danger">-1.0</td>
+<td>112.5</td>
+<td>112.5</td>
+<td>113.5</td>
+<td>112.0</td>
+<td>26020.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>億豐<br/>8464.TW</td>
+<td>178216183.0</td>
+<td class="text-danger">-4.5</td>
+<td>398.5</td>
+<td>400.0</td>
+<td>404.5</td>
+<td>395.0</td>
+<td>445253.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>波力-KY<br/>8467.TW</td>
+<td>110363787.0</td>
+<td class="text-danger">-5.0</td>
+<td>270.5</td>
+<td>271.5</td>
+<td>284.5</td>
+<td>270.5</td>
+<td>398317.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>山林水<br/>8473.TW</td>
+<td>4506046.0</td>
+<td class="text-success">0.15</td>
+<td>36.1</td>
+<td>36.65</td>
+<td>36.75</td>
+<td>35.9</td>
+<td>123594.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>東哥遊艇<br/>8478.TW</td>
+<td>21119261.0</td>
+<td class="text-success">1.5</td>
+<td>233.0</td>
+<td>236.5</td>
+<td>237.0</td>
+<td>233.0</td>
+<td>89573.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>商億-KY<br/>8482.TW</td>
+<td>2700492.0</td>
+<td class="text-danger">0.0</td>
+<td>61.8</td>
+<td>64.9</td>
+<td>64.9</td>
+<td>61.3</td>
+<td>43003.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>台汽電<br/>8926.TW</td>
+<td>13910284.0</td>
+<td class="text-danger">-0.25</td>
+<td>42.25</td>
+<td>42.35</td>
+<td>42.6</td>
+<td>42.05</td>
+<td>328530.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>高力<br/>8996.TW</td>
+<td>1685835589.0</td>
+<td class="text-success">20.0</td>
+<td>320.0</td>
+<td>339.5</td>
+<td>342.0</td>
+<td>320.0</td>
+<td>5056469.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>鈺齊-KY<br/>9802.TW</td>
+<td>49180320.0</td>
+<td class="text-danger">0.0</td>
+<td>111.5</td>
+<td>112.0</td>
+<td>112.0</td>
+<td>110.5</td>
+<td>441051.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>寶成<br/>9904.TW</td>
+<td>391508983.0</td>
+<td class="text-danger">-0.35</td>
+<td>40.7</td>
+<td>40.8</td>
+<td>41.1</td>
+<td>40.6</td>
+<td>9584246.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>大華<br/>9905.TW</td>
+<td>3749815.0</td>
+<td class="text-danger">-0.05</td>
+<td>23.1</td>
+<td>22.9</td>
+<td>23.1</td>
+<td>22.9</td>
+<td>163537.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>欣巴巴<br/>9906.TW</td>
+<td>43876766.0</td>
+<td class="text-success">5.5</td>
+<td>122.5</td>
+<td>128.0</td>
+<td>128.5</td>
+<td>120.5</td>
+<td>348523.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>統一實<br/>9907.TW</td>
+<td>9878448.0</td>
+<td class="text-success">0.1</td>
+<td>15.45</td>
+<td>15.65</td>
+<td>15.65</td>
+<td>15.35</td>
+<td>636080.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>大台北<br/>9908.TW</td>
+<td>2788725.0</td>
+<td class="text-danger">0.0</td>
+<td>30.3</td>
+<td>30.35</td>
+<td>30.4</td>
+<td>30.25</td>
+<td>91956.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>豐泰<br/>9910.TW</td>
+<td>139301216.0</td>
+<td class="text-danger">-1.0</td>
+<td>130.5</td>
+<td>131.0</td>
+<td>133.0</td>
+<td>128.5</td>
+<td>1066643.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>櫻花<br/>9911.TW</td>
+<td>22025502.0</td>
+<td class="text-success">0.6</td>
+<td>83.1</td>
+<td>84.6</td>
+<td>84.6</td>
+<td>83.0</td>
+<td>263206.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>美利達<br/>9914.TW</td>
+<td>81035832.0</td>
+<td class="text-danger">0.0</td>
+<td>160.0</td>
+<td>160.0</td>
+<td>161.5</td>
+<td>158.0</td>
+<td>506426.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>中保科<br/>9917.TW</td>
+<td>110845129.0</td>
+<td class="text-danger">-1.0</td>
+<td>128.5</td>
+<td>128.5</td>
+<td>130.5</td>
+<td>128.5</td>
+<td>858377.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>欣天然<br/>9918.TW</td>
+<td>547948.0</td>
+<td class="text-danger">-0.2</td>
+<td>40.3</td>
+<td>40.25</td>
+<td>40.65</td>
+<td>40.25</td>
+<td>13568.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>巨大<br/>9921.TW</td>
+<td>124784571.0</td>
+<td class="text-success">2.0</td>
+<td>150.0</td>
+<td>152.0</td>
+<td>152.5</td>
+<td>148.0</td>
+<td>826418.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>福興<br/>9924.TW</td>
+<td>5607651.0</td>
+<td class="text-danger">-0.5</td>
+<td>53.4</td>
+<td>53.4</td>
+<td>53.7</td>
+<td>53.3</td>
+<td>104875.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>新保<br/>9925.TW</td>
+<td>4047744.0</td>
+<td class="text-danger">-0.05</td>
+<td>40.8</td>
+<td>41.05</td>
+<td>41.15</td>
+<td>40.7</td>
+<td>98883.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>新海<br/>9926.TW</td>
+<td>421048.0</td>
+<td class="text-success">0.5</td>
+<td>52.2</td>
+<td>52.7</td>
+<td>52.8</td>
+<td>52.2</td>
+<td>8018.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>泰銘<br/>9927.TW</td>
+<td>4427341.0</td>
+<td class="text-success">0.2</td>
+<td>64.5</td>
+<td>65.0</td>
+<td>65.1</td>
+<td>64.3</td>
+<td>68358.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>中聯資源<br/>9930.TW</td>
+<td>4113091.0</td>
+<td class="text-danger">0.0</td>
+<td>66.0</td>
+<td>66.5</td>
+<td>66.5</td>
+<td>65.5</td>
+<td>62320.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>中鼎<br/>9933.TW</td>
+<td>49388290.0</td>
+<td class="text-success">0.15</td>
+<td>40.6</td>
+<td>40.85</td>
+<td>41.05</td>
+<td>40.45</td>
+<td>1211435.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>成霖<br/>9934.TW</td>
+<td>11646507.0</td>
+<td class="text-danger">0.0</td>
+<td>14.45</td>
+<td>14.35</td>
+<td>14.5</td>
+<td>14.3</td>
+<td>808159.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>全國<br/>9937.TW</td>
+<td>982522.0</td>
+<td class="text-danger">-0.8</td>
+<td>65.8</td>
+<td>65.6</td>
+<td>66.3</td>
+<td>65.0</td>
+<td>14944.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>百和<br/>9938.TW</td>
+<td>36873674.0</td>
+<td class="text-danger">-0.4</td>
+<td>78.2</td>
+<td>77.8</td>
+<td>78.9</td>
+<td>77.8</td>
+<td>471276.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>宏全<br/>9939.TW</td>
+<td>135318657.0</td>
+<td class="text-danger">0.0</td>
+<td>146.5</td>
+<td>147.0</td>
+<td>148.0</td>
+<td>144.0</td>
+<td>924912.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>信義<br/>9940.TW</td>
+<td>5691298.0</td>
+<td class="text-danger">-0.2</td>
+<td>29.25</td>
+<td>29.3</td>
+<td>29.35</td>
+<td>29.0</td>
+<td>195132.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>裕融<br/>9941.TW</td>
+<td>72811576.0</td>
+<td class="text-danger">0.0</td>
+<td>117.0</td>
+<td>117.5</td>
+<td>117.5</td>
+<td>116.0</td>
+<td>623591.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>茂順<br/>9942.TW</td>
+<td>7853124.0</td>
+<td class="text-danger">0.0</td>
+<td>115.0</td>
+<td>115.5</td>
+<td>116.0</td>
+<td>114.5</td>
+<td>68346.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>好樂迪<br/>9943.TW</td>
+<td>2519320.0</td>
+<td class="text-success">0.6</td>
+<td>79.1</td>
+<td>79.6</td>
+<td>79.6</td>
+<td>79.1</td>
+<td>31805.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>潤泰新<br/>9945.TW</td>
+<td>173437425.0</td>
+<td class="text-danger">-0.1</td>
+<td>44.5</td>
+<td>44.8</td>
+<td>45.1</td>
+<td>44.1</td>
+<td>3880052.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>三發地產<br/>9946.TW</td>
+<td>9178624.0</td>
+<td class="text-success">0.8</td>
+<td>24.6</td>
+<td>25.4</td>
+<td>25.5</td>
+<td>24.35</td>
+<td>367316.0</td>
+<td> 20241202 </td>
+</tr>
+<tr>
+<td><input type="checkbox"/></td>
+<td>世紀鋼<br/>9958.TW</td>
+<td>1006753486.0</td>
+<td class="text-danger">-5.0</td>
+<td>179.0</td>
+<td>175.0</td>
+<td>179.0</td>
+<td>171.0</td>
+<td>5784752.0</td>
+<td> 20241202 </td>
+</tr>
+</tbody>
+</table>
 
 
 
+</div>
 </body>
 </html>

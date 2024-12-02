@@ -3,6 +3,7 @@ import requests
 import json
 import pandas as pd  
 from datetime import datetime
+import os
 
 # 定義API的URL
 url = 'https://openapi.twse.com.tw/v1/exchangeReport/STOCK_DAY_ALL'  
@@ -58,7 +59,13 @@ df = df[df.index.isin(data_str)]
 
 # 將除了"Name"列以外的所有列轉換為浮點數
 df[df.columns.difference(['Name'])] = df[df.columns.difference(['Name'])].astype(float)
-today = datetime.today().strftime('%Y%m%d')
+
+today = datetime.today().strftime('%Y%m%d')  
+output_dir = 'today_stock/stock_data'  # 目錄名稱
+os.makedirs(output_dir, exist_ok=True)  # 如果目錄不存在則創建
+
+# 指定輸出檔案的路徑
+output_path = os.path.join(output_dir, f'stocks_{today}.csv')  # 檔案路徑
+
 # 將篩選後的數據保存為CSV
-output_path = f'stock_data/stocks_{today}.csv'
 df.to_csv(output_path, encoding='utf-8-sig')  # UTF-8 with BOM for Excel compatibility

@@ -20,7 +20,7 @@ print(f"HTML template path: {stock_table}")
 
 # 創建 HTML 表格標題
 html_table = '''
-    <table class="table table-bordered text-center">
+    <table class="table table-bordered text-center" id="main_table">
         <thead class="thead_light" style = "position: sticky; top: 10%;background-color:white">
             <tr>
                 <th scope="col">加入我的最愛</th>

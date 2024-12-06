@@ -17,6 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('stockHTML.urls')),  # 加入 stockHTML 的路由

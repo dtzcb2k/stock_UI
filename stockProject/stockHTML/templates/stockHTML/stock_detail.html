@@ -34,7 +34,7 @@
             <div class="{% if price_change > 0 %}text-success{% else %}text-danger{% endif %}" style="font-size: 36px;">
                 {{ current_price }}
                 <span class="{% if price_change > 0 %}text-success{% else %}text-danger{% endif %}">
-                    {% if price_change > 0 %}▲{% else %}▼{% endif %} {{ price_change }} ({{ price_change_percent }}%)
+                    {% if price_change > 0 %}▲{% else %}▼{% endif %} {{ price_change }} 
                 </span>
             </div>
             <p>{{ last_update }} 更新</p>
@@ -59,9 +59,9 @@
                     </tr>
                     <tr>
                         <th>開盤</th><td>{{ opening_price }}</td>
-                        <th>漲跌幅</th>
+                        <th>漲跌</th>
                         <td class="{% if price_change > 0 %}text-success{% else %}text-danger{% endif %}">
-                            {{ price_change_percent }}%
+                            {{ price_change}}
                         </td>
                     </tr>
                     <tr>

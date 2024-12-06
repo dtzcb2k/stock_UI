@@ -45,7 +45,7 @@ for index, row in df.iterrows():
         <td><input type="checkbox"></td>
         <td>{row['Name']}<br>{row['Code']}.TW</td>
         <td>{row['TradeValue']}</td>
-        <td class="{"text-success" if row['Change'] > 0 else "text-danger"}">{row['Change']}</td>
+        <td class="{"text-danger" if row['Change'] > 0 else "text-success"}">{row['Change']}</td>
         <td>{row['OpeningPrice']}</td>
         <td>{row['ClosingPrice']}</td>
         <td>{row['HighestPrice']}</td>
